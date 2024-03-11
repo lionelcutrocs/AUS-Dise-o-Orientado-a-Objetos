@@ -41,6 +41,19 @@ void operation ( int *operacion ) {
         cout << "\nEl resultado de la operacion es: " << r_rest << endl;
     
     break;
+     
+     case 3:
+        cout << "\n--- Operacion Division ---\nIngrese los operandos:" << endl;
+        cout << "\n-- Primer operando --" << endl;
+        cout << "-> ";
+        cin >> op1;
+        cout << "\n-- Segundo operando --" << endl;
+        cout << "-> ";
+        cin >> op2;
+
+        r_div = op1 / op2;
+
+        cout << "\nEl resultado de la operacion es: " << r_div << endl;
 
 default:
     break;

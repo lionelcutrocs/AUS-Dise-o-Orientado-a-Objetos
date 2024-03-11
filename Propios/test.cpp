@@ -36,9 +36,9 @@ void operation ( int *operacion ) {
         cout << "-> ";
         cin >> op2;
 
-        r_rest = op1 + op2;
+        r_rest = op1 - op2;
 
-        cout << "\nEl resultado de la operacion es: " << r_sum << endl;
+        cout << "\nEl resultado de la operacion es: " << r_rest << endl;
     
     break;
 

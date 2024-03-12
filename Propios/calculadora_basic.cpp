@@ -3,7 +3,7 @@
 using namespace std;
 
 
-void operation ( int *operacion ) {
+void operation ( int *operacion ) {                                             // funcion calculadora completa
 
  int op1, op2;                                                                  // declaracion de variables locales
  int r_sum;
@@ -114,7 +114,5 @@ int main () {
         cout << "Gracias por usar esta calculadora\n" << endl;
     }
     
-    
-
     return 0;
 }

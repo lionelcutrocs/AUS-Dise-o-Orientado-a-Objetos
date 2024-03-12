@@ -27,14 +27,14 @@ int main () {
  int resp_menu;
  Book biblio;
 
-    cout << "Bienvenido al gestor de Libros personal\n" << endl;
+    cout << "\n=== Bienvenido al gestor de Libros personal ===\n" << endl;
 
-    cout << "1. Selecciona lo que necesites hacer.\n" << endl;
-    cout << "2. Agregar un nuevo Libro.\n" << endl;
-    cout << "3. Eliminar un libro.\n" << endl;
-    cout << "4. Mostrar la lista de libros.\n" << endl;
+    cout << "-> Selecciona lo que necesites hacer." << endl;
+    cout << "1. Agregar un nuevo Libro." << endl;
+    cout << "2. Eliminar un libro." << endl;
+    cout << "3. Mostrar la lista de libros." << endl;
 
-    cout << "-> \n";
+    cout << "-> ";
     cin >> resp_menu;
 
 
@@ -47,21 +47,22 @@ int main () {
         cout << "Agregando nuevo Libro ..." << endl;
         cout << "Ingrese el titulo del libro." << endl;
         cout << "... ";
-        
-        string title, author;
+        string title;
+
         cin.ignore();
         getline (cin, title);
 
         cout << "Ingrese el autor del libro." << endl;
         cout << "... ";
+        string author;
         getline (cin, author);
 
         biblio.addBook (title, author);
         cout << "Libro agregado correctamente." << endl;
         break;
     
-    default:
-        break;
+    // default:
+    //     break;
     }
 
     return 0;

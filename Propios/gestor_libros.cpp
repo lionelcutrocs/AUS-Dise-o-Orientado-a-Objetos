@@ -1,15 +1,26 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+
 using namespace std;
 
 class Book {
  
  public:
-    void addBook (const string& title, const string& author) 
+    void addBook ( const string& title, const string& author ) 
     {
         books.push_back ({ title, author });
     }
     
+    void deleteBook ( const string& title, const string& author )
+    {
+        books.erase ( remove_if ( books.begin (), books.end (), [&] (const bookInfo& books ) 
+        {
+            return books.title == title && books.author == author;
+        }), 
+        
+        books.end () );
+    }
 
  private:
     struct bookInfo {
@@ -42,9 +53,7 @@ int main () {
     
     {
      case 1:
-        
-
-        cout << "Agregando nuevo Libro ..." << endl;
+        cout << "\nAgregando nuevo Libro ..." << endl;
         cout << "Ingrese el titulo del libro." << endl;
         cout << "... ";
         string title;
@@ -59,11 +68,22 @@ int main () {
 
         biblio.addBook (title, author);
         cout << "Libro agregado correctamente." << endl;
-        break;
-    
-    // default:
-    //     break;
-    }
+    break;
+     
+    //  case 2:
+
+    //     cout << "\nEliminando un libro guardado ..." << endl;
+    //     cout << "Ingrese el titulo del libro." << endl;
+    //     cout <<"... ";
+        
+
+        
+         
+    // break;
+
+// default:
+//     break;
+}
 
     return 0;
 }

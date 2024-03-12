@@ -39,8 +39,7 @@ void operation ( int *operacion ) {                                             
 
         r_rest = op1 - op2;
 
-        cout << "\nEl resultado de la operacion es: " << r_rest << endl;
-    
+        cout << "\nEl resultado de la operacion es: " << r_rest << endl;  
     break;
      
      case 3:
@@ -55,7 +54,6 @@ void operation ( int *operacion ) {                                             
         r_div = op1 / op2;
 
         cout << "\nEl resultado de la operacion es: " << r_div << endl;
-
     break;
 
      case 4:
@@ -70,7 +68,6 @@ void operation ( int *operacion ) {                                             
         r_mult = op1 * op2;
 
         cout << "\nEl resultado de la operacion es: " << r_mult << endl;
-
     break;
 
 default:

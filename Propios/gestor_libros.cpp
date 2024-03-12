@@ -3,12 +3,21 @@
 using namespace std;
 
 class Book {
-    public:
-
-    void addBook () {
-
+ 
+ public:
+    void addBook (const string& title, const string& author) 
+    {
+        books.push_back ({title, author });
     }
     
+
+ private:
+    struct bookInfo {
+        string title;
+        string author;
+    };
+
+    vector <bookInfo> books;
 };
 
 
@@ -33,7 +42,7 @@ int main () {
     
     {
      case 1:
-        cout << "Agregando nuevo Libro ..." << biblio.addBook;
+        cout << "Agregando nuevo Libro ..." << biblio.addBook ();
         break;
     
     default:

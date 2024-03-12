@@ -5,7 +5,7 @@ using namespace std;
 
 void operation ( int *operacion ) {
 
- int op1, op2;
+ int op1, op2;                                                                  // declaracion de variables locales
  int r_sum;
  int r_rest;
  int r_div;
@@ -14,16 +14,16 @@ void operation ( int *operacion ) {
     switch ( *operacion )
     
     {
-     case 1:
+     case 1:                                                                    // operacion suma
         cout << "\n--- Operacion Suma ---\nIngrese los operandos:" << endl;
         cout << "\n-- Primer operando --" << endl;
         cout << "-> ";
-        cin >> op1;
+        cin >> op1;                                                             // ingreso del primer operando ( usuario )
         cout << "\n-- Segundo operando --" << endl;
         cout << "-> ";
-        cin >> op2;
+        cin >> op2;                                                             // ingreso del segundo operando ( usuario )
 
-        r_sum = op1 + op2;
+        r_sum = op1 + op2;                                                      // operacion, resultado en variable r_sum
 
         cout << "\nEl resultado de la operacion es: " << r_sum << endl;      
     break;
@@ -86,20 +86,20 @@ int main () {
  string respuestaUsuario;
  string respuestaCorrecta = "si,Si,SI";
 
-    cout << "Bienvenido a la calculadora basica\n" << endl;
+    cout << "Bienvenido a la calculadora basica\n" << endl;                             // menu para el usuario
     cout << "Ingrese la opcion para operar" << endl;
     cout << "\n1 -> Suma\n2 -> Resta\n3 -> Division\n4 -> Multiplicacion\n" << endl;
-    cout << "-> ";
-    cin >> operacion;
+    cout << "-> ";                                                                      // ingreso de dato por el usuario
+    cin >> operacion;                                                                   // asignacion a la variable (dato de usuario)
 
-    operation ( &operacion );
+    operation ( &operacion );                                                           // llamado a la funcion
 
     cout << "\nQuiere hacer otro calculo? (Si o No)\n" << endl;
     cout << "-> ";
     cin >> respuestaUsuario;
 
 
-    if ( respuestaUsuario.compare(respuestaCorrecta) )
+    if ( respuestaUsuario.compare(respuestaCorrecta) )                                  // chance de hacer un calculo mas, si el usuario desea
     {
         cout << "\nIngrese la opcion para operar" << endl;
         cout << "\n1 -> Suma\n2 -> Resta\n3 -> Division\n4 -> Multiplicacion\n" << endl;
@@ -108,7 +108,7 @@ int main () {
 
         operation ( &operacion );
 
-        cout << "\n ---- Gracias por usar esta calculadora ----\n" << endl;
+        cout << "\n ---- Gracias por usar esta calculadora ----\n" << endl;             // mensaje de cierre del programa
 
     } else {
         cout << "Gracias por usar esta calculadora\n" << endl;

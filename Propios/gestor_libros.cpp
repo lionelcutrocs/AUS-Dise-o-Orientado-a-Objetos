@@ -7,7 +7,7 @@ class Book {
  public:
     void addBook (const string& title, const string& author) 
     {
-        books.push_back ({title, author });
+        books.push_back ({ title, author });
     }
     
 
@@ -42,7 +42,22 @@ int main () {
     
     {
      case 1:
-        cout << "Agregando nuevo Libro ..." << biblio.addBook ();
+        
+
+        cout << "Agregando nuevo Libro ..." << endl;
+        cout << "Ingrese el titulo del libro." << endl;
+        cout << "... ";
+        
+        string title, author;
+        cin.ignore();
+        getline (cin, title);
+
+        cout << "Ingrese el autor del libro." << endl;
+        cout << "... ";
+        getline (cin, author);
+
+        biblio.addBook (title, author);
+        cout << "Libro agregado correctamente." << endl;
         break;
     
     default:

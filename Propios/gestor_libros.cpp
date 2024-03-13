@@ -62,27 +62,35 @@ int main () {
         getline (cin, title);
 
         cout << "Ingrese el autor del libro." << endl;
-        cout << "... ";
+        cout << "-> ";
         string author;
-        getline (cin, author);
+        getline ( cin, author );
 
-        biblio.addBook (title, author);
+        biblio.addBook ( title, author );
         cout << "Libro agregado correctamente." << endl;
     break;
      
-    //  case 2:
+     case 2:
 
-    //     cout << "\nEliminando un libro guardado ..." << endl;
-    //     cout << "Ingrese el titulo del libro." << endl;
-    //     cout <<"... ";
-        
+        cout << "\nEliminando un libro guardado ..." << endl;
+        cout << "Ingrese el titulo del libro." << endl;
+        cout <<"... ";
+        string title;
 
+        cin.ignore ();
+        getline ( cin, title );
+
+        cout << "ingrese el autor del libro." << endl;
+        cout << "-> ";
+        string author;
+        getline ( cin, author );
         
-         
-    // break;
+        biblio.deleteBook ( title, author );
+        cout << "Libro eliminado correctamente" << endl;
+    break;
 
 // default:
-//     break;
+//    break;
 }
 
     return 0;

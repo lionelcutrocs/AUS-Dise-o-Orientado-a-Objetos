@@ -37,6 +37,8 @@ int main () {
 
  int resp_menu;
  Book biblio;
+ string title;
+ string author;
 
     cout << "\n=== Bienvenido al gestor de Libros personal ===\n" << endl;
 
@@ -56,14 +58,12 @@ int main () {
         cout << "\nAgregando nuevo Libro ..." << endl;
         cout << "Ingrese el titulo del libro." << endl;
         cout << "... ";
-        string title;
 
         cin.ignore();
-        getline (cin, title);
+        getline ( cin, title );
 
         cout << "Ingrese el autor del libro." << endl;
         cout << "-> ";
-        string author;
         getline ( cin, author );
 
         biblio.addBook ( title, author );
@@ -75,23 +75,24 @@ int main () {
         cout << "\nEliminando un libro guardado ..." << endl;
         cout << "Ingrese el titulo del libro." << endl;
         cout <<"... ";
-        string title;
 
         cin.ignore ();
         getline ( cin, title );
 
         cout << "ingrese el autor del libro." << endl;
         cout << "-> ";
-        string author;
+        
         getline ( cin, author );
         
         biblio.deleteBook ( title, author );
         cout << "Libro eliminado correctamente" << endl;
+
     break;
 
 // default:
 //    break;
 }
+
 
     return 0;
 }

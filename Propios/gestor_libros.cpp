@@ -32,9 +32,64 @@ class Book {
     vector <bookInfo> books;
 };
 
- void menu_operation () {
+ void menu_operation ( string& resp_correcta, string& resp_backmenu,
+                        string& author, string& title, Book biblio, int& resp_menu) {
 
+    switch ( resp_menu )
+        
+    {
+        case 1:
+         cout << "\nAgregando nuevo Libro ..." << endl;
+         cout << "Ingrese el titulo del libro." << endl;
+         cout << "... ";
 
+         cin.ignore();
+         getline ( cin, title );
+
+         cout << "\nIngrese el autor del libro." << endl;
+         cout << "... ";
+         getline ( cin, author );
+
+         biblio.addBook ( title, author );
+         cout << "Libro agregado correctamente." << endl;
+
+         cout << "Quiere realizar otra operacion mas? ( Si o No )" << endl;
+         cout << "-> ";
+         cin >> resp_backmenu;
+
+        //  if ( resp_backmenu.compare (resp_correcta) )
+        // {
+            
+        // }
+        break;
+        
+        case 2:
+         cout << "\nEliminando un libro guardado ..." << endl;
+         cout << "Ingrese el titulo del libro." << endl;
+         cout <<"-> ";
+
+         cin.ignore ();
+         getline ( cin, title );
+
+         cout << "Ingrese el autor del libro." << endl;
+         cout << "-> ";
+            
+         getline ( cin, author );
+            
+         biblio.deleteBook ( title, author );
+         cout << "Libro eliminado correctamente" << endl;
+
+        break;
+
+        case 4:
+         cout << "Saliendo del programa ..." << endl;
+        
+        
+        break;
+
+    // default:
+    //    break;
+    }
 
 
  };
@@ -66,63 +121,7 @@ int main () {
     cout << "\n-> ";
     cin >> resp_menu;
 
-    while ( repeat_menu )
-    {
 
-        switch ( resp_menu )
-        
-        {
-        case 1:
-            cout << "\nAgregando nuevo Libro ..." << endl;
-            cout << "Ingrese el titulo del libro." << endl;
-            cout << "... ";
-
-            cin.ignore();
-            getline ( cin, title );
-
-            cout << "\nIngrese el autor del libro." << endl;
-            cout << "... ";
-            getline ( cin, author );
-
-            biblio.addBook ( title, author );
-            cout << "Libro agregado correctamente." << endl;
-
-            cout << "Quiere realizar otra operacion mas? ( Si o No )" << endl;
-            cout << "-> ";
-            cin >> resp_backmenu;
-
-            if ( resp_backmenu.compare (resp_correcta) )
-            {
-                repeat_menu = false;
-            }
-        break;
-        
-        case 2:
-            cout << "\nEliminando un libro guardado ..." << endl;
-            cout << "Ingrese el titulo del libro." << endl;
-            cout <<"-> ";
-
-            cin.ignore ();
-            getline ( cin, title );
-
-            cout << "Ingrese el autor del libro." << endl;
-            cout << "-> ";
-            
-            getline ( cin, author );
-            
-            biblio.deleteBook ( title, author );
-            cout << "Libro eliminado correctamente" << endl;
-
-        break;
-
-        case 4:
-            cout << "Saliendo del programa ..." << endl;
-            repeat_menu = false;
-        break;
-
-    // default:
-    //    break;
-    }
 
     // cout << "Quiere realizar otra operacion mas? ( Si o No )" << endl;
     // cout << "-> ";
@@ -131,8 +130,7 @@ int main () {
     //     if ( resp_backmenu.compare (resp_correcta) )
     //     {
     //         // bandera al swicht
-    //     }
-    }   
+    //     }  
 
 
     return 0;

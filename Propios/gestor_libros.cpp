@@ -93,18 +93,7 @@ class Book {
 
 
  };
-
-
-int main () {
-
- int resp_menu;
-// bool repeat_menu = true;
-
- Book biblio;
- string title;
- string author;
- string resp_backmenu;
- string resp_correcta = "si, Si, SI";
+ void menu_user ( int& resp_menu ) {
 
     cout << "\n=== Bienvenido al gestor de Libros personal ===\n" << endl;
 
@@ -120,6 +109,21 @@ int main () {
 
     cout << "\n-> ";
     cin >> resp_menu;
+
+ };
+
+int main () {
+
+ int resp_menu;
+// bool repeat_menu = true;
+
+ Book biblio;
+ string title;
+ string author;
+ string resp_backmenu;
+ string resp_correcta = "si, Si, SI";
+
+    menu_user ( resp_menu );
 
     menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu );
 

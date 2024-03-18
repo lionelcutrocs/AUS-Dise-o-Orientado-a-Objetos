@@ -40,7 +40,7 @@ class Book {
 };
 
  void menu_operation ( string& resp_correcta, string& resp_backmenu,
-                        string& author, string& title, Book& biblio, int& resp_menu ) 
+                        string& author, string& title, Book& biblio, int& resp_menu, bool& repeat_menu ) 
 {
     switch ( resp_menu )
         
@@ -65,6 +65,14 @@ class Book {
          cout << "-> ";
          cin >> resp_backmenu;
 
+         if ( resp_backmenu.compare ( resp_correcta ))
+         {
+            break;
+
+         } else {
+            repeat_menu = false;
+         }
+         
         break;
         
         case 2:
@@ -128,7 +136,7 @@ class Book {
 int main () {
 
  int resp_menu;
-// bool repeat_menu = true;
+ bool repeat_menu = true;
 
  Book biblio;
  string title;
@@ -138,15 +146,24 @@ int main () {
 
     menu_user ( resp_menu );
 
-    menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu );
+    menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu);
 
-    while ( resp_backmenu.compare (resp_correcta))
+    do
     {
         menu_user ( resp_menu );
 
-        menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu );
+        menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
 
-    }
+    } while ( repeat_menu = true );
+    
+
+    // while ( resp_backmenu.compare (resp_correcta))
+    // {
+    //     menu_user ( resp_menu );
+
+    //     menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu );
+
+    // }
     
     // cout << "Quiere realizar otra operacion mas? ( Si o No )" << endl;
     // cout << "-> ";

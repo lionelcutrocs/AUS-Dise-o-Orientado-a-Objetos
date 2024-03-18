@@ -26,7 +26,7 @@ class Book {
     void printBook () const {
 
         for (const auto& libro : books ) {
-            cout << "\nLibro: " << libro.title << " - Autor: " << libro.author << endl;
+            cout << "Libro: " << libro.title << " - Autor: " << libro.author << endl;
         }
     }
 
@@ -40,7 +40,7 @@ class Book {
 };
 
  void menu_operation ( string& resp_correcta, string& resp_backmenu,
-                        string& author, string& title, Book biblio, int& resp_menu ) 
+                        string& author, string& title, Book& biblio, int& resp_menu ) 
 {
     switch ( resp_menu )
         
@@ -58,9 +58,10 @@ class Book {
          getline ( cin, author );
 
          biblio.addBook ( title, author );
-         cout << "Libro agregado correctamente." << endl;
+         //biblio.printBook();
+         cout << "\nLibro agregado correctamente." << endl;
 
-         cout << "\n¿Quiere realizar otra operacion mas? ( Si o No )" << endl;
+         cout << "\nQuiere realizar otra operacion mas? ( Si o No )" << endl;
          cout << "-> ";
          cin >> resp_backmenu;
 
@@ -74,13 +75,13 @@ class Book {
          cin.ignore ();
          getline ( cin, title );
 
-         cout << "Ingrese el autor del libro." << endl;
+         cout << "\nIngrese el autor del libro." << endl;
          cout << "-> ";
             
          getline ( cin, author );
             
          biblio.deleteBook ( title, author );
-         cout << "Libro eliminado correctamente" << endl;
+         cout << "\nLibro eliminado correctamente" << endl;
 
         break;
 
@@ -89,11 +90,10 @@ class Book {
          
          biblio.printBook();
 
-         cout << "\n¿Quiere realizar otra operacion mas? ( Si o No )" << endl;
+         cout << "\nQuiere realizar otra operacion mas? ( Si o No )" << endl;
          cout << "-> ";
          cin >> resp_backmenu;
 
-        
         break;
 
         case 4:

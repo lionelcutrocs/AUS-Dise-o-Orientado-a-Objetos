@@ -154,7 +154,7 @@ int main () {
 
         menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
 
-    } while ( repeat_menu = true );
+    } while ( repeat_menu == true );
     
 
     // while ( resp_backmenu.compare (resp_correcta))

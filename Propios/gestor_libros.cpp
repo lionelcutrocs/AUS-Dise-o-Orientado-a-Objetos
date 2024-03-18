@@ -23,6 +23,13 @@ class Book {
         books.end () );
     }
 
+    void printBook () const {
+
+        for (const auto& libro : books ) {
+            cout << "\nLibro: " << libro.title << " - Autor: " << libro.author << endl;
+        }
+    }
+
  private:
     struct bookInfo {
         string title;
@@ -33,8 +40,8 @@ class Book {
 };
 
  void menu_operation ( string& resp_correcta, string& resp_backmenu,
-                        string& author, string& title, Book biblio, int& resp_menu) {
-
+                        string& author, string& title, Book biblio, int& resp_menu ) 
+{
     switch ( resp_menu )
         
     {
@@ -53,14 +60,10 @@ class Book {
          biblio.addBook ( title, author );
          cout << "Libro agregado correctamente." << endl;
 
-         cout << "Quiere realizar otra operacion mas? ( Si o No )" << endl;
+         cout << "\n¿Quiere realizar otra operacion mas? ( Si o No )" << endl;
          cout << "-> ";
          cin >> resp_backmenu;
 
-        //  if ( resp_backmenu.compare (resp_correcta) )
-        // {
-            
-        // }
         break;
         
         case 2:
@@ -81,18 +84,28 @@ class Book {
 
         break;
 
+        case 3:
+         cout << "\nEsta es la lista de libros actual." << endl;
+         
+         biblio.printBook();
+
+         cout << "\n¿Quiere realizar otra operacion mas? ( Si o No )" << endl;
+         cout << "-> ";
+         cin >> resp_backmenu;
+
+        
+        break;
+
         case 4:
          cout << "Saliendo del programa ..." << endl;
         
         
         break;
-
+    }
     // default:
     //    break;
-    }
-
-
- };
+};
+ 
  void menu_user ( int& resp_menu ) {
 
     cout << "\n=== Bienvenido al gestor de Libros personal ===\n" << endl;
@@ -129,6 +142,8 @@ int main () {
 
     while ( resp_backmenu.compare (resp_correcta))
     {
+        menu_user ( resp_menu );
+
         menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu );
 
     }

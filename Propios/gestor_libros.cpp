@@ -98,7 +98,7 @@ class Book {
 int main () {
 
  int resp_menu;
- bool repeat_menu = true;
+// bool repeat_menu = true;
 
  Book biblio;
  string title;
@@ -121,8 +121,14 @@ int main () {
     cout << "\n-> ";
     cin >> resp_menu;
 
+    menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu );
 
+    while ( resp_backmenu.compare (resp_correcta))
+    {
+        menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu );
 
+    }
+    
     // cout << "Quiere realizar otra operacion mas? ( Si o No )" << endl;
     // cout << "-> ";
     // cin >> resp_backmenu;

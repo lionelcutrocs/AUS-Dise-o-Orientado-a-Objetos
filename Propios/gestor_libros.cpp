@@ -87,6 +87,10 @@ class Book {
          biblio.deleteBook ( title, author );
          cout << "\nLibro eliminado correctamente" << endl;
 
+         cout << "\nQuiere realizar otra operacion mas? ( Si o No )" << endl;
+         cout << "-> ";
+         cin >> resp_backmenu;
+
         break;
 
         case 3:
@@ -102,7 +106,9 @@ class Book {
 
         case 4:
          cout << "Saliendo del programa ..." << endl;
-        
+         
+         repeat_menu = false;
+         
         
         break;
     }
@@ -155,7 +161,6 @@ int main () {
             break;
         }
 
-    
     }
     
 

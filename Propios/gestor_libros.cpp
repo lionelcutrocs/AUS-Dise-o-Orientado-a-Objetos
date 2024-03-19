@@ -42,7 +42,7 @@ class Book {
  void menu_operation ( string& resp_correcta, string& resp_backmenu,
                         string& author, string& title, Book& biblio, int& resp_menu, bool& repeat_menu ) 
 {
-    string flag;
+    
 
     switch ( resp_menu )
         
@@ -138,9 +138,6 @@ int main () {
  string resp_backmenu;
  string resp_correcta = "si, Si, SI";
 
-    // menu_user ( resp_menu );
-
-    // menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
     
     while ( repeat_menu == true )
     {   
@@ -148,12 +145,13 @@ int main () {
 
         menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
 
-        if ( resp_backmenu.compare (resp_correcta) )
+        if ( resp_correcta == resp_backmenu )
         {
             menu_user ( resp_menu );
-            
+            menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
+
         } else {
-            repeat_menu == false;
+            repeat_menu = false;
         }
     }
     

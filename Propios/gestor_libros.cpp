@@ -55,10 +55,12 @@ class Book {
 
          cout << "\nIngrese el autor del libro." << endl;
          cout << "... ";
+
+         cin.ignore ();
          getline ( cin, author );
 
          biblio.addBook ( title, author );
-         //biblio.printBook();
+        
          cout << "\nLibro agregado correctamente." << endl;
 
          cout << "\nQuiere realizar otra operacion mas? ( Si o No )" << endl;
@@ -117,12 +119,10 @@ class Book {
  void menu_user ( int& resp_menu ) {
 
     cout << "\n=== Bienvenido al gestor de Libros personal ===\n" << endl;
+    
+    cout << "-----------------------------------------------" << endl;
 
-    cout << "Presione ENTER para continuar" << endl;
-
-    cin.get();
-
-    cout << "-> Selecciona lo que necesites hacer." << endl;
+    cout << "\n-> Selecciona lo que necesites hacer." << endl;
     cout << "\n1. Agregar un nuevo Libro." << endl;
     cout << "2. Eliminar un libro." << endl;
     cout << "3. Mostrar la lista de libros." << endl;
@@ -146,7 +146,7 @@ int main () {
 
     menu_user ( resp_menu );
 
-    menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu);
+    menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
 
     do
     {

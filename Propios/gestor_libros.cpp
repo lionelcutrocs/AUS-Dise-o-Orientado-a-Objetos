@@ -136,23 +136,26 @@ int main () {
  string title;
  string author;
  string resp_backmenu;
- string resp_correcta = "si, Si, SI";
+ string resp_correcta = "si";
 
     
-    while ( repeat_menu == true )
+    while ( repeat_menu )
     {   
         menu_user ( resp_menu );
 
         menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
 
-        if ( resp_correcta == resp_backmenu )
+        if ( resp_backmenu == resp_correcta )
         {
             menu_user ( resp_menu );
             menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
 
         } else {
             repeat_menu = false;
+            break;
         }
+        
+     break;
     }
     
 

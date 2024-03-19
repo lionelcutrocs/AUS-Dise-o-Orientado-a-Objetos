@@ -42,6 +42,8 @@ class Book {
  void menu_operation ( string& resp_correcta, string& resp_backmenu,
                         string& author, string& title, Book& biblio, int& resp_menu, bool& repeat_menu ) 
 {
+    string flag;
+
     switch ( resp_menu )
         
     {
@@ -66,14 +68,6 @@ class Book {
          cout << "\nQuiere realizar otra operacion mas? ( Si o No )" << endl;
          cout << "-> ";
          cin >> resp_backmenu;
-
-         if ( resp_backmenu.compare ( resp_correcta ))
-         {
-            break;
-
-         } else {
-            repeat_menu = false;
-         }
          
         break;
         
@@ -135,7 +129,7 @@ class Book {
 
 int main () {
 
- int resp_menu;
+ int resp_menu;                                             // variable para elegir opcion del menu
  bool repeat_menu = true;
 
  Book biblio;
@@ -144,35 +138,27 @@ int main () {
  string resp_backmenu;
  string resp_correcta = "si, Si, SI";
 
-    menu_user ( resp_menu );
+    // menu_user ( resp_menu );
 
-    menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
-
-    do
-    {
+    // menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
+    
+    while ( repeat_menu == true )
+    {   
         menu_user ( resp_menu );
 
         menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu, repeat_menu );
 
-    } while ( repeat_menu == true );
+        if ( resp_backmenu.compare (resp_correcta) )
+        {
+            menu_user ( resp_menu );
+            
+        } else {
+            repeat_menu == false;
+        }
+    }
     
 
-    // while ( resp_backmenu.compare (resp_correcta))
-    // {
-    //     menu_user ( resp_menu );
 
-    //     menu_operation ( resp_correcta, resp_backmenu, author, title, biblio, resp_menu );
-
-    // }
-    
-    // cout << "Quiere realizar otra operacion mas? ( Si o No )" << endl;
-    // cout << "-> ";
-    // cin >> resp_backmenu;
-
-    //     if ( resp_backmenu.compare (resp_correcta) )
-    //     {
-    //         // bandera al swicht
-    //     }  
 
 
     return 0;

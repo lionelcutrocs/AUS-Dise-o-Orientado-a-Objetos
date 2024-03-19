@@ -39,15 +39,16 @@ class Book {
     vector <bookInfo> books;
 };
 
- void menu_operation ( string& resp_correcta, string& resp_backmenu,
-                        string& author, string& title, Book& biblio, int& resp_menu, bool& repeat_menu ) 
+ void menu_operation                                                // eleccion de opciones
+ ( string& resp_correcta, string& resp_backmenu, string& author, string& title, Book& biblio, int& resp_menu, bool& repeat_menu ) 
+
 {
     
 
     switch ( resp_menu )
         
     {
-        case 1:
+        case 1:                                                     // case 1 = agregar libro
          cout << "\nAgregando nuevo Libro ..." << endl;
          cout << "Ingrese el titulo del libro." << endl;
          cout << "... ";
@@ -71,7 +72,7 @@ class Book {
          
         break;
         
-        case 2:
+        case 2:                                                     // case 2 = eliminar libro
          cout << "\nEliminando un libro guardado ..." << endl;
          cout << "Ingrese el titulo del libro." << endl;
          cout <<"-> ";
@@ -93,7 +94,7 @@ class Book {
 
         break;
 
-        case 3:
+        case 3:                                                     // case 3 = mostrar libros
          cout << "\nEsta es la lista de libros actual." << endl;
          
          biblio.printBook();
@@ -104,7 +105,7 @@ class Book {
 
         break;
 
-        case 4:
+        case 4:                                                     // case 4 = salir del programa
          cout << "Saliendo del programa ..." << endl;
          
          repeat_menu = false;
@@ -112,11 +113,10 @@ class Book {
         
         break;
     }
-    // default:
-    //    break;
+
 };
  
- void menu_user ( int& resp_menu ) {
+ void menu_user ( int& resp_menu ) {                                // menu para el usuario
 
     cout << "\n=== Bienvenido al gestor de Libros personal ===\n" << endl;
     
@@ -135,17 +135,17 @@ class Book {
 
 int main () {
 
- int resp_menu;                                             // variable para elegir opcion del menu
- bool repeat_menu = true;
+ int resp_menu;                                                     // variable para elegir opcion del menu
+ bool repeat_menu = true;                                           // variable bandera para el flujo del programa (continuar)
 
- Book biblio;
- string title;
- string author;
- string resp_backmenu;
- string resp_correcta = "si";
+ Book biblio;                                                       // variable para referenciar a la clase Book
+ string title;                                                      // variable para guardar el titulo del libro
+ string author;                                                     // variable para guardar el autor del libro
+ string resp_backmenu;                                              // variable para respuesta del usuario (continuar)
+ string resp_correcta = "si";                                       // variable para toma de decision (continuar)
 
     
-    while ( repeat_menu )
+    while ( repeat_menu )                                           // flujo del programa ( absoluto )
     {   
         menu_user ( resp_menu );
 

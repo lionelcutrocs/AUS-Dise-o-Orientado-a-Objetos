@@ -1,5 +1,20 @@
 {
     "files.associations": {
         "iostream": "cpp"
-    }
+    },
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**", // Esto incluirá todos los archivos de tu proyecto
+                "C:/Program Files/MariaDB/MariaDB C++ Connector 64-bit/include/mariadb/conncpp.hpp", // Ruta al directorio donde está conncpp.hpp
+                //"C:/ruta/a/otras_dependencias" // Ruta al directorio donde está Properties.hpp, si es necesario
+            ],
+            "defines": [],
+            "compilerPath": "C:/MinGW/bin/g++.exe", // Ruta al compilador g++ de MinGW
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64"
+        }
+    ]
 }

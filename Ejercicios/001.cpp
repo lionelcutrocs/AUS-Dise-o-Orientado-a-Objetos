@@ -11,7 +11,10 @@ class Alumno {
  string nombre;
  string mail;
 
-
+ public:
+    Alumno ( int d, string n, string m ):
+        dni {d}, nombre {n}, mail {m} {};
+        string getNombre () { return nombre; };
 };
 
 int main () {

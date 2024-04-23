@@ -36,7 +36,7 @@ int main () {
  string mail;
 
     cout << "\nBienvenido al sistema de inscripcion para Alumnos." << endl;
-    cout << "\nPrecione Enter para guardar:" << endl;
+    cout << "\nPrecione Enter para comenzar:" << endl;
     cin.ignore();
 
     cout << "Ingrese su nombre ..." << endl;

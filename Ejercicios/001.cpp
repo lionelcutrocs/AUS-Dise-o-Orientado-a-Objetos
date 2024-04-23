@@ -23,7 +23,9 @@ class Materia {
  vector <Alumno> inscriptos;
 
  public:
-    void enrolarAlumno (Alumno);
+    void enrolarAlumno (Alumno nuevoAlumno ) {
+        inscriptos.push_back ( nuevoAlumno );
+    }
     void listarAlumno ();
     bool buscarAlumno (int);
     
@@ -34,6 +36,8 @@ int main () {
  int dni;
  string nombre;
  string mail;
+ Materia materia;
+
 
     cout << "\nBienvenido al sistema de inscripcion para Alumnos." << endl;
     cout << "\nPrecione Enter para comenzar:" << endl;
@@ -57,6 +61,7 @@ int main () {
     getline ( cin, mail );
 
     Alumno alumno1 ( dni, nombre, mail );                               // creo el objeto para guardar los datos
+    materia.enrolarAlumno ( alumno1 );                                  // llamo a la funcion para guardar el objeto en el vector
 
     cout << "\nPrecione Enter para guardar:" << endl;
     cin.ignore();
@@ -66,7 +71,7 @@ int main () {
     cout << "DNI -> " << dni << endl;
     cout << "Mail -> " << mail << endl;
 
-    cout << ""
+    // cout << ""
 
     return 0;
 }

@@ -12,7 +12,7 @@ class Alumno {
 
  public:
     Alumno ( int d, string n, string m ) : dni {d}, nombre {n}, mail {m} {};            // constructor para inicializar datos del alumno
-        string getNombre () { return nombre; };
+        string getNombre () { return nombre; };                                         // metodo para acceso a nombre
 };
 
 class Materia {
@@ -27,7 +27,6 @@ class Materia {
     void listarAlumno ();
     bool buscarAlumno (int);
     
-
 };
 
 int main () {

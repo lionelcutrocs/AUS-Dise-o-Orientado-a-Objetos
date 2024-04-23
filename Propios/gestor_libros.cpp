@@ -43,7 +43,6 @@ class Book {
 
 {
     
-
     switch ( resp_menu )
         
     {

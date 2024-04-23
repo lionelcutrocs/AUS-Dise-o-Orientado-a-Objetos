@@ -41,14 +41,14 @@ int main () {
     cout << "\nIngrese su nombre ..." << endl;
     getline (cin, nombre );
 
-    cout << "<-------------------------->" << endl;
+    cout << "<\n-------------------------->" << endl;
 
-    cout << "Ingrese su DNI." << endl;
+    cout << "\nIngrese su DNI." << endl;
     cin >> dni;
 
-    cout << "<-------------------------->" << endl;
+    cout << "<\n-------------------------->" << endl;
 
-    cout << "Ingrese su mail." << endl;
+    cout << "\nIngrese su mail." << endl;
     cin.ignore();
     getline ( cin, mail );
 
@@ -57,7 +57,7 @@ int main () {
     cin.ignore();
 
     cout << "\n¡Incripcion existosa! Los siguientes datos fueron guardados" << endl;
-    cout << "Nombre -> " << alumno1.getNombre() << endl;
+    cout << "\nNombre -> " << alumno1.getNombre() << endl;
     cout << "DNI -> " << dni << endl;
     cout << "Mail -> " << mail << endl;
 

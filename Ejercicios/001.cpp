@@ -24,6 +24,8 @@ class Materia {
 
  public:
     void enrolarAlumno (Alumno);
+    void listarAlumno ();
+    bool buscarAlumno (int);
     
 
 };

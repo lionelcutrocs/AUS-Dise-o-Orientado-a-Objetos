@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cstdlib>
 
 using namespace std;
 
@@ -23,25 +24,44 @@ class Materia {
  vector <Alumno> inscriptos;
 
  public:
-    void enrolarAlumno (Alumno nuevoAlumno ) {
-        inscriptos.push_back ( nuevoAlumno );
+    
+    void setNombre ( string nombre )
+    {
+        this->nombre = nombre;
     }
+    
+    string getNombre ()
+    {
+        return nombre;
+    }
+
+    void enrolarAlumno (Alumno nuevoAlumno ) 
+        {
+         inscriptos.push_back ( nuevoAlumno );
+        }
+
     void listarAlumno ();
     bool buscarAlumno (int);
     
 };
 
+void limpiarConsola () {
+    system("cls");
+};
+
 int main () {
 
  int dni;
+ int cuatrimestre;
  string nombre;
  string mail;
  Materia materia;
-
+ string codigo;
+ string nombre;
 
     cout << "\nBienvenido al sistema de inscripcion para Alumnos." << endl;
     cout << "\nPrecione Enter para comenzar:" << endl;
-    cin.ignore();
+    cin.ignore();                                                       // pausa del programa para precionar enter y continuar
 
     cout << "Ingrese su nombre ..." << endl;
     cout << "-> ";
@@ -64,14 +84,26 @@ int main () {
     materia.enrolarAlumno ( alumno1 );                                  // llamo a la funcion para guardar el objeto en el vector
 
     cout << "\nPrecione Enter para guardar:" << endl;
-    cin.ignore();
+    cin.ignore();                                                       // pausa del programa para precionar enter y continuar
 
     cout << "\nInscripcion existosa! Los siguientes datos fueron guardados" << endl;
     cout << "\nNombre -> " << alumno1.getNombre() << endl;
     cout << "DNI -> " << dni << endl;
     cout << "Mail -> " << mail << endl;
 
-    // cout << ""
+    limpiarConsola();
+
+    cout << "Ingrese los datos de la Materia:" << endl;
+    cout << "Ingrese el nombre de la materia:" << endl;
+    cout << "-> ";
+    getline ( cin, nombre );
+
+    materia.setNombre ( nombre );
+    cout << "\nInscripcion existosa! Los siguientes datos fueron guardados" << endl;
+    cout << "\nNombre de materia -> " << materia.getNombre() << endl;
+
+
+
 
     return 0;
 }

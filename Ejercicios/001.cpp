@@ -35,33 +35,38 @@ int main () {
  string nombre;
  string mail;
 
-    cout << "\nBienvenido al sistema de incripcion para Alumnos." << endl;
+    cout << "\nBienvenido al sistema de inscripcion para Alumnos." << endl;
+    cout << "\nPrecione Enter para guardar:" << endl;
     cin.ignore();
 
-    cout << "\nIngrese su nombre ..." << endl;
+    cout << "Ingrese su nombre ..." << endl;
+    cout << "-> ";
     getline (cin, nombre );
 
-    cout << "<\n-------------------------->" << endl;
+    cout << "\n<-------------------------->" << endl;
 
     cout << "\nIngrese su DNI." << endl;
+    cout << "-> ";
     cin >> dni;
 
-    cout << "<\n-------------------------->" << endl;
+    cout << "\n<-------------------------->" << endl;
 
     cout << "\nIngrese su mail." << endl;
+    cout << "-> ";
     cin.ignore();
     getline ( cin, mail );
 
     Alumno alumno1 ( dni, nombre, mail );                               // creo el objeto para guardar los datos
 
+    cout << "\nPrecione Enter para guardar:" << endl;
     cin.ignore();
 
-    cout << "\n¡Incripcion existosa! Los siguientes datos fueron guardados" << endl;
+    cout << "\nInscripcion existosa! Los siguientes datos fueron guardados" << endl;
     cout << "\nNombre -> " << alumno1.getNombre() << endl;
     cout << "DNI -> " << dni << endl;
     cout << "Mail -> " << mail << endl;
 
-
+    cout << ""
 
     return 0;
 }

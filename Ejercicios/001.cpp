@@ -18,22 +18,13 @@ class Alumno {
 
 class Materia {
 
- string codigo;
- string nombre;
  int cuatrimestre;
+ string nombreMateria;
+ string codigo;
+
  vector <Alumno> inscriptos;
 
  public:
-    
-    void setNombre ( string nombre )
-    {
-        this->nombre = nombre;
-    }
-    
-    string getNombre ()
-    {
-        return nombre;
-    }
 
     void enrolarAlumno (Alumno nuevoAlumno ) 
         {
@@ -57,7 +48,7 @@ int main () {
  string mail;
  Materia materia;
  string codigo;
- string nombre;
+ string nombreMateria;
 
     cout << "\nBienvenido al sistema de inscripcion para Alumnos." << endl;
     cout << "\nPrecione Enter para comenzar:" << endl;
@@ -91,16 +82,16 @@ int main () {
     cout << "DNI -> " << dni << endl;
     cout << "Mail -> " << mail << endl;
 
-    limpiarConsola();
+    cout << "\n<---------------------------------------------------------->" << endl;
 
-    cout << "Ingrese los datos de la Materia:" << endl;
-    cout << "Ingrese el nombre de la materia:" << endl;
+
+    cout << "\nCargue los datos de la Materia:" << endl;
+    cout << "\nNombre de la materia:" << endl;
     cout << "-> ";
-    getline ( cin, nombre );
+    getline ( cin, nombreMateria );
 
-    materia.setNombre ( nombre );
     cout << "\nInscripcion existosa! Los siguientes datos fueron guardados" << endl;
-    cout << "\nNombre de materia -> " << materia.getNombre() << endl;
+    cout << "\nNombre de materia -> " << nombreMateria << endl;
 
 
 

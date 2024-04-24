@@ -36,9 +36,7 @@ class Materia {
     
 };
 
-void limpiarConsola () {
-    system("cls");
-};
+
 
 int main () {
 

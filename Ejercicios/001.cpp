@@ -74,8 +74,34 @@ void menu_operation ( string& nombre, string& mail, string& nombreMateria, strin
          cout << "Mail -> " << mail << endl;
 
         break;
-    
-    
+
+        case 2:
+         
+         cout << "\nPrecione Enter para continuar:" << endl;
+         cin.ignore();   
+
+         cout << "Cargue los datos de la Materia:" << endl;
+         cout << "\nNombre de la materia:" << endl;
+         cout << "-> ";
+         getline ( cin, nombreMateria );
+
+         cout << "\nCargue el numero de cuatrimestre correspondiente" << endl;
+         cout << "-> ";
+         cin >> cuatrimestre;
+
+         cout << "\nCargue el codigo de materia" << endl;
+         cout << "-> ";
+         cin.ignore();
+         getline ( cin, codigo );
+
+         cout << "\nPrecione Enter para guardar:" << endl;
+         cin.ignore();
+
+         cout << "Inscripcion existosa! Los siguientes datos fueron guardados" << endl;
+         cout << "\nNombre de materia -> " << nombreMateria << endl;
+         cout << "Numero de cuatrimestre -> " << cuatrimestre << endl;
+         cout << "Codigo de materia -> " << codigo << endl;
+        
         break;
     }
 
@@ -98,30 +124,7 @@ int main () {
 
     cout << "\n<---------------------------------------------------------->" << endl;
 
-    cout << "\nPrecione Enter para continuar:" << endl;
-    cin.ignore();   
-
-    cout << "Cargue los datos de la Materia:" << endl;
-    cout << "\nNombre de la materia:" << endl;
-    cout << "-> ";
-    getline ( cin, nombreMateria );
-
-    cout << "\nCargue el numero de cuatrimestre correspondiente" << endl;
-    cout << "-> ";
-    cin >> cuatrimestre;
-
-    cout << "\nCargue el codigo de materia" << endl;
-    cout << "-> ";
-    cin.ignore();
-    getline ( cin, codigo );
-
-    cout << "\nPrecione Enter para guardar:" << endl;
-    cin.ignore();
-
-    cout << "Inscripcion existosa! Los siguientes datos fueron guardados" << endl;
-    cout << "\nNombre de materia -> " << nombreMateria << endl;
-    cout << "Numero de cuatrimestre -> " << cuatrimestre << endl;
-    cout << "Codigo de materia -> " << codigo << endl;
+    
 
     return 0;
 }

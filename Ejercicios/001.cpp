@@ -36,12 +36,56 @@ class Materia {
     
 };
 
+void menu_operation ( string& nombre, string& mail, string& nombreMateria, string& codigo, int& dni, int& cuatrimestre, int& resp_menu, Materia& materia ) 
 
+{
+    switch ( resp_menu )
+    
+    {
+        case 1:
+         cout << "Registro del Alumno." << endl;
+         cout << "--------------------" << endl;
+         cout << "Ingrese su nombre." << endl;
+         cout << "-> ";
+         getline (cin, nombre );
+
+         cout << "\n<-------------------------->" << endl;
+
+         cout << "\nIngrese su DNI." << endl;
+         cout << "-> ";
+         cin >> dni;
+
+         cout << "\n<-------------------------->" << endl;
+
+         cout << "\nIngrese su mail." << endl;
+         cout << "-> ";
+         cin.ignore();
+         getline ( cin, mail );
+
+         Alumno alumno1 ( dni, nombre, mail );                               // creo el objeto para guardar los datos
+         materia.enrolarAlumno ( alumno1 );                                  // llamo a la funcion para guardar el objeto en el vector
+
+         cout << "\nPrecione Enter para guardar:" << endl;
+         cin.ignore();                                                       // pausa del programa para precionar enter y continuar
+
+         cout << "Inscripcion existosa! Los siguientes datos fueron guardados" << endl;
+         cout << "\nNombre -> " << alumno1.getNombre() << endl;
+         cout << "DNI -> " << dni << endl;
+         cout << "Mail -> " << mail << endl;
+
+        break;
+    
+    
+        break;
+    }
+
+};
 
 int main () {
 
  int dni;
  int cuatrimestre;
+ int resp_menu;
  string nombre;
  string mail;
  Materia materia;
@@ -51,34 +95,6 @@ int main () {
     cout << "\nBienvenido al sistema de inscripcion para Alumnos." << endl;
     cout << "\nPrecione Enter para comenzar:" << endl;
     cin.ignore();                                                       // pausa del programa para precionar enter y continuar
-
-    cout << "Ingrese su nombre." << endl;
-    cout << "-> ";
-    getline (cin, nombre );
-
-    cout << "\n<-------------------------->" << endl;
-
-    cout << "\nIngrese su DNI." << endl;
-    cout << "-> ";
-    cin >> dni;
-
-    cout << "\n<-------------------------->" << endl;
-
-    cout << "\nIngrese su mail." << endl;
-    cout << "-> ";
-    cin.ignore();
-    getline ( cin, mail );
-
-    Alumno alumno1 ( dni, nombre, mail );                               // creo el objeto para guardar los datos
-    materia.enrolarAlumno ( alumno1 );                                  // llamo a la funcion para guardar el objeto en el vector
-
-    cout << "\nPrecione Enter para guardar:" << endl;
-    cin.ignore();                                                       // pausa del programa para precionar enter y continuar
-
-    cout << "Inscripcion existosa! Los siguientes datos fueron guardados" << endl;
-    cout << "\nNombre -> " << alumno1.getNombre() << endl;
-    cout << "DNI -> " << dni << endl;
-    cout << "Mail -> " << mail << endl;
 
     cout << "\n<---------------------------------------------------------->" << endl;
 

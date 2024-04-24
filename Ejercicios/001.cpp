@@ -54,7 +54,7 @@ int main () {
     cout << "\nPrecione Enter para comenzar:" << endl;
     cin.ignore();                                                       // pausa del programa para precionar enter y continuar
 
-    cout << "Ingrese su nombre ..." << endl;
+    cout << "Ingrese su nombre." << endl;
     cout << "-> ";
     getline (cin, nombre );
 
@@ -77,24 +77,37 @@ int main () {
     cout << "\nPrecione Enter para guardar:" << endl;
     cin.ignore();                                                       // pausa del programa para precionar enter y continuar
 
-    cout << "\nInscripcion existosa! Los siguientes datos fueron guardados" << endl;
+    cout << "Inscripcion existosa! Los siguientes datos fueron guardados" << endl;
     cout << "\nNombre -> " << alumno1.getNombre() << endl;
     cout << "DNI -> " << dni << endl;
     cout << "Mail -> " << mail << endl;
 
     cout << "\n<---------------------------------------------------------->" << endl;
 
+    cout << "\nPrecione Enter para continuar:" << endl;
+    cin.ignore();   
 
-    cout << "\nCargue los datos de la Materia:" << endl;
+    cout << "Cargue los datos de la Materia:" << endl;
     cout << "\nNombre de la materia:" << endl;
     cout << "-> ";
     getline ( cin, nombreMateria );
 
-    cout << "\nInscripcion existosa! Los siguientes datos fueron guardados" << endl;
+    cout << "\nCargue el numero de cuatrimestre correspondiente" << endl;
+    cout << "-> ";
+    cin >> cuatrimestre;
+
+    cout << "\nCargue el codigo de materia" << endl;
+    cout << "-> ";
+    cin.ignore();
+    getline ( cin, codigo );
+
+    cout << "\nPrecione Enter para guardar:" << endl;
+    cin.ignore();
+
+    cout << "Inscripcion existosa! Los siguientes datos fueron guardados" << endl;
     cout << "\nNombre de materia -> " << nombreMateria << endl;
-
-
-
+    cout << "Numero de cuatrimestre -> " << cuatrimestre << endl;
+    cout << "Codigo de materia -> " << codigo << endl;
 
     return 0;
 }

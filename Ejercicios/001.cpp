@@ -39,11 +39,9 @@ class Materia {
 void menu_operation ( string& nombre, string& mail, string& nombreMateria, string& codigo, int& dni, int& cuatrimestre, int& resp_menu, Materia& materia ) 
 
 {
-    switch ( resp_menu )
-    
+    if ( resp_menu == 1)
     {
-        case 1:
-         cout << "Registro del Alumno." << endl;
+         cout << "\nEnrolamiento del Alumno." << endl;
          cout << "--------------------" << endl;
          cout << "Ingrese su nombre." << endl;
          cout << "-> ";
@@ -73,10 +71,9 @@ void menu_operation ( string& nombre, string& mail, string& nombreMateria, strin
          cout << "DNI -> " << dni << endl;
          cout << "Mail -> " << mail << endl;
 
-        break;
-
-        case 2:
-         
+    } else if (resp_menu == 2)
+    
+    {    
          cout << "\nPrecione Enter para continuar:" << endl;
          cin.ignore();   
 
@@ -101,8 +98,6 @@ void menu_operation ( string& nombre, string& mail, string& nombreMateria, strin
          cout << "\nNombre de materia -> " << nombreMateria << endl;
          cout << "Numero de cuatrimestre -> " << cuatrimestre << endl;
          cout << "Codigo de materia -> " << codigo << endl;
-        
-        break;
     }
 
 };
@@ -124,7 +119,23 @@ int main () {
 
     cout << "\n<---------------------------------------------------------->" << endl;
 
-    
+    cout << "\nIngrese la opcion deseada" << endl;
+    cout << "\n1.Enrolar alumno." << endl;
+    cout << "2.Registrar materia." << endl;
+    cout << "\n-> "; 
+
+    cin >> resp_menu;
+    cin.ignore();
+
+    if (resp_menu == 1)
+    {
+        menu_operation ( nombre, mail, nombreMateria, codigo, dni, cuatrimestre, resp_menu, materia);
+
+    } else if ( resp_menu == 2 )
+        
+    {
+        menu_operation ( nombre, mail, nombreMateria, codigo, dni, cuatrimestre, resp_menu, materia);
+    }    
 
     return 0;
 }

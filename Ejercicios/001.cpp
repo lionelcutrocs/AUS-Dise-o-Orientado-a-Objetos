@@ -35,6 +35,7 @@ class Materia {
         {
          for ( const auto& alumno : inscriptos )
          {
+            cout << "\n<-------------------------->" << endl;
             cout << "-> " << alumno.getNombre() << endl;
          }
 
@@ -51,7 +52,7 @@ void menu_operation ( string& nombre, string& mail, string& nombreMateria, strin
     {
          cout << "\nEnrolamiento del Alumno." << endl;
          cout << "--------------------" << endl;
-         cout << "Ingrese su nombre." << endl;
+         cout << "\nIngrese su nombre." << endl;
          cout << "-> ";
          getline (cin, nombre );
 
@@ -154,12 +155,9 @@ int main () {
  string codigo;
  string nombreMateria;
 
-
+        menu_user ( resp_menu );
     do
     {
-        
-        menu_user ( resp_menu );
-
         if ( resp_menu == 1 || resp_menu == 2 )
         {
             menu_operation ( nombre, mail, nombreMateria, codigo, dni, cuatrimestre, resp_menu, materia);

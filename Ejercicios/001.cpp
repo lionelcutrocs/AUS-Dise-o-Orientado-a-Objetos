@@ -74,10 +74,10 @@ void menu_operation ( string& nombre, string& mail, string& nombreMateria, strin
     } else if (resp_menu == 2)
     
     {    
-         cout << "\nPrecione Enter para continuar:" << endl;
-         cin.ignore();   
+        //  cout << "\nPrecione Enter para continuar:" << endl;
+        //  cin.ignore();   
 
-         cout << "Cargue los datos de la Materia:" << endl;
+         cout << "\nCargue los datos de la Materia:" << endl;
          cout << "\nNombre de la materia:" << endl;
          cout << "-> ";
          getline ( cin, nombreMateria );

@@ -37,7 +37,7 @@ class Materia {
          {
             cout << "-> " << alumno.getNombre() << endl;
          }
-         
+
         };
 
     bool buscarAlumno (int);
@@ -136,7 +136,7 @@ int main () {
     cin >> resp_menu;
     cin.ignore();
 
-    if (resp_menu == 1)
+    if ( resp_menu == 1 )
     {
         menu_operation ( nombre, mail, nombreMateria, codigo, dni, cuatrimestre, resp_menu, materia);
 
@@ -144,7 +144,12 @@ int main () {
         
     {
         menu_operation ( nombre, mail, nombreMateria, codigo, dni, cuatrimestre, resp_menu, materia);
-    }    
+    
+    } else if ( resp_menu == 3 )
+
+    {
+        materia.listarAlumno ();
+    } 
 
     return 0;
 }

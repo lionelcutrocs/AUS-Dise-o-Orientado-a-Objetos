@@ -110,17 +110,8 @@ void menu_operation ( string& nombre, string& mail, string& nombreMateria, strin
 
 };
 
-int main () {
-
- int dni;
- int cuatrimestre;
- int resp_menu;
- string nombre;
- string mail;
- Materia materia;
- string codigo;
- string nombreMateria;
-
+void menu_user ( int& resp_menu )
+{
     cout << "\nBienvenido al sistema de inscripcion para Alumnos." << endl;
     cout << "\nPrecione Enter para comenzar:" << endl;
     cin.ignore();                                                       // pausa del programa para precionar enter y continuar
@@ -134,7 +125,21 @@ int main () {
     cout << "\n-> "; 
 
     cin >> resp_menu;
-    cin.ignore();
+    // cin.ignore();
+};
+
+int main () {
+
+ int dni;
+ int cuatrimestre;
+ int resp_menu;
+ string nombre;
+ string mail;
+ Materia materia;
+ string codigo;
+ string nombreMateria;
+
+    menu_user ( resp_menu );
 
     if ( resp_menu == 1 )
     {

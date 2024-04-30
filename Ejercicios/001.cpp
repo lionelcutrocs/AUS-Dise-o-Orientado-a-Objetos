@@ -125,7 +125,21 @@ void menu_user ( int& resp_menu )
     cout << "\n-> "; 
 
     cin >> resp_menu;
-    // cin.ignore();
+    cin.ignore();
+};
+
+void menu_user_v2 ( int& resp_menu )
+{
+    cout << "\n<---------------------------------------------------------->" << endl;
+
+    cout << "\nIngrese la opcion deseada" << endl;
+    cout << "\n1.Enrolar alumno." << endl;
+    cout << "2.Registrar materia." << endl;
+    cout << "3.Listar alumnos." << endl;
+    cout << "\n-> "; 
+
+    cin >> resp_menu;
+    cin.ignore();
 };
 
 int main () {
@@ -133,28 +147,35 @@ int main () {
  int dni;
  int cuatrimestre;
  int resp_menu;
+//  bool repeat_menu = true;
  string nombre;
  string mail;
  Materia materia;
  string codigo;
  string nombreMateria;
 
-    menu_user ( resp_menu );
 
-    if ( resp_menu == 1 )
+    do
     {
-        menu_operation ( nombre, mail, nombreMateria, codigo, dni, cuatrimestre, resp_menu, materia);
-
-    } else if ( resp_menu == 2 )
         
-    {
-        menu_operation ( nombre, mail, nombreMateria, codigo, dni, cuatrimestre, resp_menu, materia);
-    
-    } else if ( resp_menu == 3 )
+        menu_user ( resp_menu );
 
-    {
-        materia.listarAlumno ();
-    } 
+        if ( resp_menu == 1 || resp_menu == 2 )
+        {
+            menu_operation ( nombre, mail, nombreMateria, codigo, dni, cuatrimestre, resp_menu, materia);
+
+        } else if ( resp_menu == 3 )
+
+        {
+            materia.listarAlumno ();
+        };
+
+        cout << "\nPrecione Enter para continuar:" << endl;
+        cin.ignore();
+
+        menu_user_v2 ( resp_menu );
+
+    } while ( resp_menu != 0 );
 
     return 0;
 }

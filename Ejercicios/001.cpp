@@ -13,7 +13,7 @@ class Alumno {
 
  public:
     Alumno ( int d, string n, string m ) : dni {d}, nombre {n}, mail {m} {};            // constructor para inicializar datos del alumno
-        string getNombre () { return nombre; };                                         // metodo para acceso a nombre
+        string getNombre () const { return nombre; };                                         // metodo para acceso a nombre
 };
 
 class Materia {
@@ -31,7 +31,15 @@ class Materia {
          inscriptos.push_back ( nuevoAlumno );
         }
 
-    void listarAlumno ();
+    void listarAlumno ()
+        {
+         for ( const auto& alumno : inscriptos )
+         {
+            cout << "-> " << alumno.getNombre() << endl;
+         }
+         
+        };
+
     bool buscarAlumno (int);
     
 };
@@ -122,6 +130,7 @@ int main () {
     cout << "\nIngrese la opcion deseada" << endl;
     cout << "\n1.Enrolar alumno." << endl;
     cout << "2.Registrar materia." << endl;
+    cout << "3.Listar alumnos." << endl;
     cout << "\n-> "; 
 
     cin >> resp_menu;

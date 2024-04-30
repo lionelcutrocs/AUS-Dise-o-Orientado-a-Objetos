@@ -35,7 +35,7 @@ class Materia {
         {
          for ( const auto& alumno : inscriptos )
          {
-            cout << "\n<-------------------------->" << endl;
+            cout << "\n----------------" << endl;
             cout << "-> " << alumno.getNombre() << endl;
          }
 
@@ -75,6 +75,8 @@ void menu_operation ( string& nombre, string& mail, string& nombreMateria, strin
          cout << "\nPrecione Enter para guardar:" << endl;
          cin.ignore();                                                       // pausa del programa para precionar enter y continuar
 
+
+         cout << "-----------------------------------------------------------" << endl;
          cout << "Inscripcion existosa! Los siguientes datos fueron guardados" << endl;
          cout << "\nNombre -> " << alumno1.getNombre() << endl;
          cout << "DNI -> " << dni << endl;
@@ -103,6 +105,7 @@ void menu_operation ( string& nombre, string& mail, string& nombreMateria, strin
          cout << "\nPrecione Enter para guardar:" << endl;
          cin.ignore();
 
+         cout << "-----------------------------------------------------------" << endl;
          cout << "Inscripcion existosa! Los siguientes datos fueron guardados" << endl;
          cout << "\nNombre de materia -> " << nombreMateria << endl;
          cout << "Numero de cuatrimestre -> " << cuatrimestre << endl;
@@ -131,12 +134,12 @@ void menu_user ( int& resp_menu )
 
 void menu_user_v2 ( int& resp_menu )
 {
-    cout << "\n<---------------------------------------------------------->" << endl;
-
-    cout << "\nIngrese la opcion deseada" << endl;
+    cout << "\n<------------------------->" << endl;
+    cout << "Ingrese la opcion deseada" << endl;
     cout << "\n1.Enrolar alumno." << endl;
     cout << "2.Registrar materia." << endl;
     cout << "3.Listar alumnos." << endl;
+    cout << "0.Salir de programa." << endl;
     cout << "\n-> "; 
 
     cin >> resp_menu;

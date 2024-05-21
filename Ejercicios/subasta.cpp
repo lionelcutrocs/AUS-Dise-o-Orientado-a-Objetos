@@ -5,6 +5,15 @@
 using namespace std;
 
 
+class Lote 
+
+{
+
+
+
+
+};
+
 void menu_ingreso ( string& nombre_p ) 
 
 {
@@ -13,6 +22,15 @@ void menu_ingreso ( string& nombre_p )
     cout << "Por favor ingrese su nombre" << endl;
     cout << "-> ";
     getline ( cin, nombre_p );
+
+
+};
+
+void menu_lotes () 
+
+{
+
+    cout << "Este es la lista de lotes disponibles para ofertar" << endl;
 
 
 };

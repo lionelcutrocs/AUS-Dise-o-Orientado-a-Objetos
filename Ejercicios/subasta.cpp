@@ -37,17 +37,19 @@ void menu_ingreso ( string& nombre_p )
 
 };
 
-void menu_lotes () 
+void menu_lotes ( Lote& lote ) 
 
 {
 
     cout << "Este es la lista de lotes disponibles para ofertar" << endl;
-
+    lote.printLotes ();
 
 };
 
 int main () {
-
+ 
+ Lote lote;
+ 
  string nombre_p; 
  string nombreL;
  string numeroL;

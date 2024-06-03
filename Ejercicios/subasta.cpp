@@ -6,12 +6,23 @@ using namespace std;
 
 
 class Lote 
-
 {
+ private:
 
+    struct loteInfo {
+        string nombreL;
+        string numeroL;
+    };
 
+    vector <loteInfo> lotes;
 
+ public:
+    void printLotes () const {
 
+        for ( const auto& lote : lotes ) {
+            cout << "nombre: " << lote.nombreL << "- numero: " << lote.numeroL << endl;
+        }
+    }
 };
 
 void menu_ingreso ( string& nombre_p ) 
@@ -38,7 +49,8 @@ void menu_lotes ()
 int main () {
 
  string nombre_p; 
-
+ string nombreL;
+ string numeroL;
 
 
 

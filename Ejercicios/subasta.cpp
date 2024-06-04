@@ -20,7 +20,7 @@ class Lote
     void printLotes () const 
     {
         for ( const auto& lote : lotes ) {
-            cout << "Nombre: " << lote.nombreL << " - ID: " << lote.numeroL << endl;
+            cout << " " << lote.numeroL << " -> " << lote.nombreL << endl;
         }
     }
 
@@ -57,10 +57,10 @@ int main () {
  
  string nombre_p; 
  string nombreL;
-//  int numeroL;
 
-    milote.addLote ( "computadora", 1 );
-    milote.addLote ( "celular", 2 );
+    milote.addLote ( "Computadora", 1 );
+    milote.addLote ( "Celular", 2 );
+    milote.addLote ( "Jarron Chino", 3);
 
     cout << "Lista de lotes: " << endl;
     milote.printLotes();

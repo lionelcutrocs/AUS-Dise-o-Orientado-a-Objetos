@@ -11,7 +11,7 @@ class Lote
 
     struct loteInfo {
         string nombreL;
-        int numeroL;
+        
     };
 
     vector <loteInfo> lotes;
@@ -20,13 +20,13 @@ class Lote
     void printLotes () const 
     {
         for ( const auto& lote : lotes ) {
-            cout << " " << lote.numeroL << " -> " << lote.nombreL << endl;
+            cout << "-> " << lote.nombreL << endl;
         }
     }
 
-    void addLote ( const string& nombreL, int numeroL ) 
+    void addLote ( const string& nombreL ) 
     {
-        lotes.push_back ({nombreL,numeroL});
+        lotes.push_back ({nombreL});
     };
 };
 
@@ -46,7 +46,7 @@ void menu_lotes ( Lote& milote )
 
 {
 
-    cout << "Este es la lista de lotes disponibles para ofertar" << endl;
+    cout << "Esta es la lista de lotes disponibles para ofertar" << endl;
     milote.printLotes ();
 
 };
@@ -58,11 +58,10 @@ int main () {
  string nombre_p; 
  string nombreL;
 
-    milote.addLote ( "Computadora", 1 );
-    milote.addLote ( "Celular", 2 );
-    milote.addLote ( "Jarron Chino", 3);
+    milote.addLote ( "Computadora" );
+    milote.addLote ( "Celular" );
+    milote.addLote ( "Jarron Chino" );
 
-    cout << "Lista de lotes: " << endl;
     milote.printLotes();
 
     return 0;

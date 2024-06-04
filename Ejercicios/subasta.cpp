@@ -11,7 +11,6 @@ class Lote
 
     struct loteInfo {
         string nombreL;
-        
     };
 
     vector <loteInfo> lotes;

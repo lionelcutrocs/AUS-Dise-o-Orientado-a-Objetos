@@ -23,6 +23,11 @@ class Lote
             cout << "nombre: " << lote.nombreL << "- numero: " << lote.numeroL << endl;
         }
     }
+
+    void addLote ( const string& nombreL, string& numeroL ) 
+    {
+        lotes.push_back ({nombreL,numeroL});
+    };
 };
 
 void menu_ingreso ( string& nombre_p ) 

@@ -16,6 +16,13 @@ class Lote
     vector <loteInfo> lotes;
 
  public:
+
+    Lote () {
+        lotes.push_back ({"1- Computadora"});
+        lotes.push_back ({"2- Celular"});
+        lotes.push_back ({"3- Jaron Chino"});
+    };
+
     void printLotes () const 
     {
         for ( const auto& lote : lotes ) {
@@ -82,9 +89,9 @@ int main () {
  string nombre_p; 
  string nombreL;
 
-    milote.addLote ( "\n1- Computadora" );
-    milote.addLote ( "2- Celular" );
-    milote.addLote ( "3- Jarron Chino" );
+    // milote.addLote ( "\n1- Computadora" );
+    // milote.addLote ( "2- Celular" );
+    // milote.addLote ( "3- Jarron Chino" );
 
     menu_lotes ( milote, resp_lote);
 

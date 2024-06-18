@@ -18,6 +18,7 @@ class Lote
 
  public:
 
+
     Lote () {
         lotes.push_back ({"1- Computadora"});
         lotes.push_back ({"2- Celular"});
@@ -35,6 +36,32 @@ class Lote
     {
         lotes.push_back ({nombreL});
     };
+};
+
+class ManipularArchivos
+{
+ public:
+ void escribirEnArchivo(const std::string& nombreArchivo, const std::string& contenido) {
+  // Verificar si el archivo existe
+  if (!std::filesystem::exists(nombreArchivo)) {
+    // Crear el archivo si no existe
+    std::ofstream archivoNuevo(nombreArchivo);
+    if (!archivoNuevo.is_open()) {
+      throw std::runtime_error("Error al crear el archivo");
+    }
+  }
+
+  // Abrir el archivo
+  std::ofstream archivo(nombreArchivo, std::ios::app);
+  if (archivo.is_open()) {
+    // Escribir el contenido en el archivo
+    archivo << contenido << std::endl;
+    archivo.close();
+  } else {
+    throw std::runtime_error("Error al abrir el archivo");
+  }
+}
+
 };
 
 void menu_ingreso ( string& nombre_p ) 

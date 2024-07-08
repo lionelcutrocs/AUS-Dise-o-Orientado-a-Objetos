@@ -52,6 +52,34 @@ class Lote
         }   cout << endl; 
     }
 
+    void realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferta ) {
+        if (numeroLote <= 0 || numeroLote > lotes.size()) {
+            cerr << "Numero de lote invalido." << endl;
+            return;
+        }
+
+        lotes[numeroLote - 1].ofertaActual = montoOFerta;
+        lotes[numeroLote - 1].nombreOferta = nombreOferta;
+    }
+
+
+    void guardarResultadosEnArchivo (const string& nombreArchivo) {
+        ofstream archivo(nombreArchivo);
+        if (archivo.is_open()) {
+            for (const auto& lote : lotes ) {
+                archivo << "Lote: " << lote.nombreL << endl;
+                archivo << "Oferta ganadora: " << lote.ofertaActual << endl; 
+                if (!lote.nombreOferta.empty ()) {
+                    archivo << "Oferta ganador: " << lote.nombreOferta << endl;
+                }
+            }   archivo << endl;
+            archivo.close();
+            cout << "Resultados guardados en -> " << nombreArchivo << endl;
+        } else {
+            cerr << "Error al guardar el archivo de resultados -> " << nombreArchivo << endl; 
+        }  
+    }   
+
 };
 
 

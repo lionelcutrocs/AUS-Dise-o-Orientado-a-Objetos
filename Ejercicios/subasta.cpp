@@ -49,7 +49,7 @@ class Lote
             if (!lote.nombreOferta.empty()) {
                 cout << "Oferta actual: " << lote.nombreOferta << endl;
             }
-        }   cout << endl;
+        }   cout << endl; 
     }
 
 };

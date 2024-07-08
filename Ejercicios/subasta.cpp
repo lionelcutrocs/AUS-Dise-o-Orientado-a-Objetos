@@ -26,18 +26,36 @@ class Lote
         lotes.push_back ({"3- Jaron Chino"});
     };
 
-    void printLotes () const 
+    void leerLotesDeArchivo ( const string& nombreArchivo)
     {
-        for ( const auto& lote : lotes ) {
-            cout << "" << lote.nombreL << endl;
+        ifstream archivo (nombreArchivo);
+        if (archivo.is_open()) {
+            string linea;
+            while (getline (archivo, linea)) {
+                if (!linea.empty()) {
+                    lotes.push_back({linea, 0, ""});
+                }
+            }
+            archivo.close();
+        } else {
+            cerr << "Error al abrir el archivo de lotes: " << nombreArchivo << endl;
         }
     }
 
-    void addLote ( const string& nombreL ) 
-    {
-        lotes.push_back ({nombreL});
-    };
+    void printLotes () const {
+        for (const auto& lote : lotes) {
+            cout << "Lote: " << lote.nombreL << endl;
+            cout << "Oferta actual: " << lote.ofertaActual << endl;
+            if (!lote.nombreOferta.empty()) {
+                cout << "Oferta actual: " << lote.nombreOferta << endl;
+            }
+        }   cout << endl;
+    }
+
 };
+
+
+
 
 class ManipularArchivos
 {

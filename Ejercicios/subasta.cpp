@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <filesystem>
 
 using namespace std;
 
@@ -41,24 +42,24 @@ class Lote
 class ManipularArchivos
 {
  public:
- void escribirEnArchivo(const std::string& nombreArchivo, const std::string& contenido) {
+ void escribirEnArchivo(const string& nombreArchivo, const string& contenido) {
   // Verificar si el archivo existe
-  if (!std::filesystem::exists(nombreArchivo)) {
+  if (!filesystem::exists(nombreArchivo)) {
     // Crear el archivo si no existe
-    std::ofstream archivoNuevo(nombreArchivo);
+    ofstream archivoNuevo(nombreArchivo);
     if (!archivoNuevo.is_open()) {
-      throw std::runtime_error("Error al crear el archivo");
+      throw runtime_error("Error al crear el archivo");
     }
   }
 
   // Abrir el archivo
-  std::ofstream archivo(nombreArchivo, std::ios::app);
+  ofstream archivo(nombreArchivo, ios::app);
   if (archivo.is_open()) {
     // Escribir el contenido en el archivo
-    archivo << contenido << std::endl;
+    archivo << contenido << endl;
     archivo.close();
   } else {
-    throw std::runtime_error("Error al abrir el archivo");
+    throw runtime_error("Error al abrir el archivo");
   }
 }
 

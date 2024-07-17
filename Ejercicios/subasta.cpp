@@ -46,20 +46,20 @@ class Lote
         for (const auto& lote : lotes) {
             cout << "Lote: " << lote.nombreL << endl;
             cout << "Oferta actual: " << lote.ofertaActual << endl;
-            if (!lote.nombreOferta.empty()) {
-                cout << "Oferta actual: " << lote.nombreOferta << endl;
+            if (!lote.nombreOferente.empty()) {
+                cout << "Oferta actual: " << lote.nombreOferente << endl;
             }
         }   cout << endl; 
     }
 
-    void realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferta ) {
+    void realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferente ) {
         if (numeroLote <= 0 || numeroLote > lotes.size()) {
             cerr << "Numero de lote invalido." << endl;
             return;
         }
 
         lotes[numeroLote - 1].ofertaActual = montoOFerta;
-        lotes[numeroLote - 1].nombreOferta = nombreOferta;
+        lotes[numeroLote - 1].nombreOferente = nombreOferente;
     }
 
 
@@ -69,8 +69,8 @@ class Lote
             for (const auto& lote : lotes ) {
                 archivo << "Lote: " << lote.nombreL << endl;
                 archivo << "Oferta ganadora: " << lote.ofertaActual << endl; 
-                if (!lote.nombreOferta.empty ()) {
-                    archivo << "Oferta ganador: " << lote.nombreOferta << endl;
+                if (!lote.nombreOferente.empty ()) {
+                    archivo << "Oferta ganador: " << lote.nombreOferente << endl;
                 }
             }   archivo << endl;
             archivo.close();
@@ -83,32 +83,30 @@ class Lote
 };
 
 
-
-
 class ManipularArchivos
+
 {
  public:
  void escribirEnArchivo(const string& nombreArchivo, const string& contenido) {
-  // Verificar si el archivo existe
-  if (!filesystem::exists(nombreArchivo)) {
-    // Crear el archivo si no existe
-    ofstream archivoNuevo(nombreArchivo);
-    if (!archivoNuevo.is_open()) {
-      throw runtime_error("Error al crear el archivo");
+     // Verificar si el archivo existe
+     if (!filesystem::exists(nombreArchivo)) {
+        // Crear el archivo si no existe
+        ofstream archivoNuevo(nombreArchivo);
+        if (!archivoNuevo.is_open()) {
+        throw runtime_error("Error al crear el archivo");
+        }
+     }
+
+     // Abrir el archivo
+     ofstream archivo(nombreArchivo, ios::app);
+     if (archivo.is_open()) {
+        // Escribir el contenido en el archivo
+        archivo << contenido << endl;
+        archivo.close();
+     } else {
+        throw runtime_error("Error al abrir el archivo");
+        }   
     }
-  }
-
-  // Abrir el archivo
-  ofstream archivo(nombreArchivo, ios::app);
-  if (archivo.is_open()) {
-    // Escribir el contenido en el archivo
-    archivo << contenido << endl;
-    archivo.close();
-  } else {
-    throw runtime_error("Error al abrir el archivo");
-  }
-}
-
 };
 
 void menu_ingreso ( string& nombre_p ) 
@@ -154,6 +152,12 @@ void menu_lotes ( Lote& milote, int& resp_lote )
     }
 
 };
+
+void realizarOferta (Lote& milote, string nombre_p ) 
+{
+    int numeroLore;
+    int montoOferta;
+}
 
 int main () {
  

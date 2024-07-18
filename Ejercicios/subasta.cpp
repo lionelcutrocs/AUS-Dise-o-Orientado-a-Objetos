@@ -27,14 +27,16 @@ class Lote
         leerLotesDeArchivo ( "lotes.txt" );
     };
 
-    void leerLotesDeArchivo ( const string& nombreArchivo, vector<Lote::loteInfo>& lotes )
+    void leerLotesDeArchivo ( const string& nombreArchivo )
     {
         ifstream archivo(nombreArchivo);
         if (archivo.is_open()) {
             for (int i = 0; getline(archivo, linea); ++i) {
             if (!linea.empty()) {
-                lotes[i] = {linea, 0, ""};
-                }
+                lotes[i].nombreL = linea;                           // se accede a nombreL y se inicializa correctamente
+                lotes[i].ofertaActual = 0;                          // se accede a ofertaActual y se inicializa correctamente
+                lotes[i].nombreOferente = "";                       // se accede a nombreOferente y se inicializa correctamente
+                }                                                   // este metodo logra asignar valores en cada miembro de forma directa
             }
             archivo.close();
         } else {
@@ -54,7 +56,7 @@ class Lote
     }
 
     void realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferente ) {
-        if (numeroLote <= 0 || numeroLote > lotes.size()) {
+        if (numeroLote < 1 || numeroLote > lotes.size()) {
             cerr << "Numero de lote invalido." << endl;
             return;
         }
@@ -154,7 +156,7 @@ void menu_lotes ( Lote& milote, int& resp_lote )
 
 void realizarOferta (Lote& milote, string nombre_p ) 
 {
-    int numeroLore;
+    int numeroLote;
     int montoOferta;
 }
 
@@ -162,7 +164,7 @@ int main () {
  
  Lote milote;                                   // instancia de la clase Lote para gestionar los lotes
 
- milote.leerLotesDeArchivo("Lotes.txt");        // leer lotes desde el archivo al iniciar el programa
+ milote.leerLotesDeArchivo("lotes.txt");        // leer lotes desde el archivo al iniciar el programa
  
  int resp_lote;                                 // variable para almacenar la seleccion del lote
  int montoOferta;                               // variable para almacenar el monto de la oferta

@@ -27,13 +27,13 @@ class Lote
         leerLotesDeArchivo ( "lotes.txt" );
     };
 
-    void Lote::leerLotesDeArchivo ( const string& nombreArchivo)
+    void leerLotesDeArchivo ( const string& nombreArchivo, vector<Lote::loteInfo>& lotes )
     {
         ifstream archivo(nombreArchivo);
         if (archivo.is_open()) {
-            while (getline (archivo, linea)) {
-                if (!linea.empty()) {
-                    lotes.push_back({linea, 0, ""});
+            for (int i = 0; getline(archivo, linea); ++i) {
+            if (!linea.empty()) {
+                lotes[i] = {linea, 0, ""};
                 }
             }
             archivo.close();

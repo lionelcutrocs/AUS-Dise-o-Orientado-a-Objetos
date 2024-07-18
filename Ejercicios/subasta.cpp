@@ -13,6 +13,8 @@ class Lote
 
     struct loteInfo {
         string nombreL;
+        string nombreOferente;
+        int ofertaActual = 0;
     };
 
     vector <loteInfo> lotes;
@@ -161,18 +163,45 @@ void realizarOferta (Lote& milote, string nombre_p )
 
 int main () {
  
- Lote milote;
+ Lote milote;                                   // instancia de la clase Lote para gestionar los lotes
+
+ milote.leerLotesDeArchivo("Lotes.txt");        // leer lotes desde el archivo al iniciar el programa
  
- int resp_lote;
- int resp_usr;
- string nombre_p; 
- string nombreL;
+ int resp_lote;                                 // variable para almacenar la seleccion del lote
+ int montoOferta;                               // variable para almacenar el monto de la oferta
+ string nombre_p;                               // variable para almacenar el nombre del participante
+ string nombreL;                                
+ char continuar;
 
-    // milote.addLote ( "\n1- Computadora" );
-    // milote.addLote ( "2- Celular" );
-    // milote.addLote ( "3- Jarron Chino" );
 
-    menu_lotes ( milote, resp_lote);
+    do {
+
+     menu_ingreso ( nombre_p );
+     menu_lotes ( milote, resp_lote );
+    
+        if ( resp_lote > 0 && resp_lote <= milote.getLotesSize()) {
+            cout << "Ingrese el monto de su oferta para el lote " << resp_lote << ":" << endl;
+            cout << "-> ";
+            cin >> montoOferta;
+        }
+
+        if ( montoOferta > 0 ) {
+            realizarOferta ( milote, resp_lote, montoOferta, nombre_p );
+            cout << "Oferta registrada correctamente." << endl;
+        } else {
+            cout << "El monto de la oferta debe ser un numero positivo." << endl;
+        } else {
+            cout << "Opcion invalida. Intente de nuevo." << endl;
+        };
+        
+     cout << "\nDesea realizar otra oferta? (s/n): "; << endl;
+     cin >> continuar;
+    
+    } while ( continuar == 's' || continuar == 'S' );
+
+ // guardar los resultados al finalizar la subasta
+ milote.guardarResultadosEnArchivo( "resultados_subasta.txt" );
+ cout << "\nGracias por participar en la subasta!" << endl;
 
 
     return 0;

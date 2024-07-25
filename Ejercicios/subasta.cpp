@@ -85,9 +85,7 @@ class ManipularArchivos
             lote.ofertaActual = montoOferta;
             lote.nombreOferente = nombreOferente;
         }
-        
     }
-
 
     void Lote::guardarResultadosEnArchivo (const string& nombreArchivo) const
     {

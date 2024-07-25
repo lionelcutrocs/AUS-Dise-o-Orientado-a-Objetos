@@ -141,6 +141,26 @@ void menu_lotes ( Lote& milote, int& resp_lote )
     }
 };
 
+void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const string& nombre_p ) 
+{
+    if ( resp_lote > 0 && resp_lote <= milote.getLotesSize())
+    {
+        cout << "Ingrese el monto de la oferta para el lote " << resp_lote << ":" << endl;
+        cout << "-> ";
+        cin >> montoOferta;
+    }
+    
+    if ( montoOferta > 0 )
+    {
+        milote.realizarOferta (resp_lote, montoOferta, nombre_p );
+        cout << "Oferta registrada correctamente." << endl;
+        
+    } else {
+        cout << "El monto de la oferta debe ser un numero positivo" << endl;
+    }
+    
+}
+
 // void realizarOferta (Lote& milote, string nombre_p ) 
 // {
 //     int numeroLote;

@@ -10,7 +10,6 @@ using namespace std;
 class Lote 
 {
  private:
-
     struct loteInfo {
         string nombreL;
         string nombreOferente;
@@ -22,7 +21,13 @@ class Lote
 
  public:
  
- 
+ Lote();
+ void leerLotesDeArchivo (const string& nombreArchivo );
+ void printLotes () const;
+ void realizarOferta ( int numeroLote, int montoOferta, const string& nomreOferente );
+ void guardarResultadosEnArchivo ( const string& nombreArchivo ) const;
+ int getLotesSize () const;
+};
 
     Lote::Lote() {
         leerLotesDeArchivo ( "lotes.txt" );
@@ -167,12 +172,6 @@ void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const stri
     }
     
 }
-
-// void realizarOferta (Lote& milote, string nombre_p ) 
-// {
-//     int numeroLote;
-//     int montoOferta;
-// }
 
 int main () {
  

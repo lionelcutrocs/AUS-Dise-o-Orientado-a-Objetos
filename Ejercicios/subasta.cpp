@@ -98,21 +98,28 @@ class Lote
 class ManipularArchivos
 {
  public:
- void escribirEnArchivo(const string& nombreArchivo, const string& contenido) {
-        // Verificar si el archivo existe
-        if (!archivo.is_open()) {
-            // Crear el archivo si no existe
-            ofstream archivoNuevo(nombreArchivo);
-            if (!archivoNuevo.is_open()) {
-                throw runtime_error("Error al crear el archivo");
-            }
-        } else {
-            archivo << contenido << endl;
-            archivo.close();
-        }
-    }
+ void escribirEnArchivo (const string& nombreArchivo, const string& contenido);
+
 };
 
+void ManipularArchivos::escribirEnArchivo(const string& nombreArchivo, const string& contenido) 
+{
+    // Verificar si el archivo existe
+    ofstream archivo(nombreArchivo, ios::app);
+    if (!archivo.is_open()) {
+        // Crear el archivo si no existe
+        ofstream archivoNuevo(nombreArchivo);
+        if (!archivoNuevo.is_open()) {
+            throw runtime_error("Error al crear el archivo");
+        } else {
+            archivoNuevo << contenido << endl;
+            archivoNuevo.close();
+        } 
+    } else {
+        archivo << contenido << endl;
+        archivo.close();
+    }       
+}
 // funcion del menu y gestion de ofertas
 void menu_ingreso ( string& nombre_p ) 
 {
@@ -154,7 +161,7 @@ void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const stri
     {
         milote.realizarOferta (resp_lote, montoOferta, nombre_p );
         cout << "Oferta registrada correctamente." << endl;
-        
+
     } else {
         cout << "El monto de la oferta debe ser un numero positivo" << endl;
     }

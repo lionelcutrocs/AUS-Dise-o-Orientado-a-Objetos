@@ -181,12 +181,10 @@ void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const stri
 int main () {
  
  Lote milote;                                       // instancia de la clase Lote para gestionar los lotes
-
-//  milote.leerLotesDeArchivo("lotes.txt");        // leer lotes desde el archivo al iniciar el programa
  
  int resp_lote;                                     // variable para almacenar la seleccion del lote
  int montoOferta;                                   // variable para almacenar el monto de la oferta
- string nombreOferente;                                   // variable para almacenar el nombre del participante
+ string nombreOferente;                             // variable para almacenar el nombre del participante
  string nombreL;                                
  char continuar;
 
@@ -194,7 +192,7 @@ int main () {
     do {
 
      menu_ingreso ( nombreOferente );                     // se solicita el nombre del participante
-     menu_lotes ( milote, resp_lote );              // muestra la lista de lotes y solicita la seleccion deseada
+     menu_lotes ( milote, resp_lote );                      // muestra la lista de lotes y solicita la seleccion deseada
      solicitarOferta ( milote, resp_lote, montoOferta, nombreOferente );   
     
      // se consulta al usuario si desea realizar otra oferta

@@ -76,9 +76,15 @@ class ManipularArchivos
             cerr << "Numero de lote invalido." << endl;
             return;
         }
-
-        lotes[numeroLote - 1].ofertaActual = montoOferta;
-        lotes[numeroLote - 1].nombreOferente = nombreOferente;
+        // actualiza el nombre del oferente siempre
+        lotes[numeroLote - 1].nombreOferente = montoOferta;
+        
+        // solo actualiza la oferta si el monto es mayor a 0
+        if (montoOferta > 0 )
+        {
+            lotes[numeroLote - 1].ofertaActual = montoOferta;
+        }
+        
     }
 
 

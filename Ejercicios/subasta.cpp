@@ -29,6 +29,12 @@ class Lote
  int getLotesSize () const;
 };
 
+class ManipularArchivos
+{
+ public:
+ void escribirEnArchivo (const string& nombreArchivo, const string& contenido);
+};
+
     Lote::Lote() {
         leerLotesDeArchivo ( "lotes.txt" );
     };
@@ -52,7 +58,8 @@ class Lote
         }
     }
 
-    void Lote::printLotes() const {
+    void Lote::printLotes() const 
+    {
         for (const auto& lote : lotes) {
             cout << "Lote: " << lote.nombreL << endl;
             cout << "Oferta actual: " << lote.ofertaActual << endl;
@@ -99,32 +106,24 @@ class Lote
         return static_cast<int>(lotes.size());
     }
 
-
-class ManipularArchivos
-{
- public:
- void escribirEnArchivo (const string& nombreArchivo, const string& contenido);
-
-};
-
-void ManipularArchivos::escribirEnArchivo(const string& nombreArchivo, const string& contenido) 
-{
-    // Verificar si el archivo existe
-    ofstream archivo(nombreArchivo, ios::app);
-    if (!archivo.is_open()) {
-        // Crear el archivo si no existe
-        ofstream archivoNuevo(nombreArchivo);
-        if (!archivoNuevo.is_open()) {
-            throw runtime_error("Error al crear el archivo");
+    void ManipularArchivos::escribirEnArchivo(const string& nombreArchivo, const string& contenido) 
+    {
+        // Verificar si el archivo existe
+        ofstream archivo(nombreArchivo, ios::app);
+        if (!archivo.is_open()) {
+            // Crear el archivo si no existe
+            ofstream archivoNuevo(nombreArchivo);
+            if (!archivoNuevo.is_open()) {
+                throw runtime_error("Error al crear el archivo");
+            } else {
+                archivoNuevo << contenido << endl;
+                archivoNuevo.close();
+            } 
         } else {
-            archivoNuevo << contenido << endl;
-            archivoNuevo.close();
-        } 
-    } else {
-        archivo << contenido << endl;
-        archivo.close();
-    }       
-}
+            archivo << contenido << endl;
+            archivo.close();
+        }       
+    }
 // funcion del menu y gestion de ofertas
 void menu_ingreso ( string& nombre_p ) 
 {

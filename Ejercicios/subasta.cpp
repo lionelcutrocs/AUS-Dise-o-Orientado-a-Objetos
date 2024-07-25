@@ -141,7 +141,6 @@ void menu_lotes ( Lote& milote, int& resp_lote )
 
     cout << "\nSeleccione a continuacion el lote que quiere ofertar" << endl;
     cout << "-> ";
-    cin >> resp_lote;
 
     while (!(cin >> resp_lote ) || resp_lote <= 0 || resp_lote > milote.getLotesSize())
     {
@@ -150,7 +149,7 @@ void menu_lotes ( Lote& milote, int& resp_lote )
         cout << "Seleccion invalida. Por favor ingrese un numero de lote valido." << endl;
         cout << "->";
     }
-    cin.ignore (numeric_limits<streamsize>::max(), '\n' );
+    cin.ignore (numeric_limits<streamsize>::max(), '\n');
 };
 
 void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const string& nombre_p ) 
@@ -160,12 +159,12 @@ void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const stri
     while (!(cin >> montoOferta ) || montoOferta <= 0 )
     {
         cin.clear();
-        cin.ignore (numeric_limits<streamsize>::max(), '\n' );
+        cin.ignore (numeric_limits<streamsize>::max(), '\n');
         cout << "El monto de la oferta debe ser un numero positivo" << endl;
         cout << "-> ";
     }
     
-    cin.ignore (numeric_limits<streamsize>::max(), '\n' );
+    cin.ignore (numeric_limits<streamsize>::max(), '\n');
     milote.realizarOferta (resp_lote, montoOferta, nombre_p );
     cout << "La oferta fue registrada correctamente." << endl;
 }

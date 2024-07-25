@@ -18,10 +18,11 @@ class Lote
     };
 
     vector <loteInfo> lotes;
+    string linea;
 
  public:
  
- string linea;
+ 
 
     Lote::Lote() {
         leerLotesDeArchivo ( "lotes.txt" );
@@ -57,7 +58,8 @@ class Lote
         }    
     }
 
-    void realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferente ) {
+    void realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferente )
+    {
         if (numeroLote <= 0 || numeroLote > static_cast<int>(lotes.size())) {
             cerr << "Numero de lote invalido." << endl;
             return;
@@ -68,7 +70,8 @@ class Lote
     }
 
 
-    void guardarResultadosEnArchivo (const string& nombreArchivo) {
+    void guardarResultadosEnArchivo (const string& nombreArchivo) 
+    {
      ofstream archivo(nombreArchivo);
      if (archivo.is_open()) {
         for (const auto& lote : lotes ) {
@@ -129,31 +132,20 @@ void menu_lotes ( Lote& milote, int& resp_lote )
     cout << "-> ";
     cin >> resp_lote;
 
-    switch ( resp_lote )
+    while (!(cin >> resp_lote ) || resp_lote <= 0 || resp_lote > milote.getLotesSize())
     {
-    case 1:
-        cout << "\nHa seleccionado el lote 1 -> Computadora" << endl;
-    
-    break;
-    
-    case 2:
-        cout << "\nHa seleccionado el lote 2 -> Celular" << endl;
-    
-    break;
-
-    case 3:
-        cout << "\nHa seleccionado el lote 3 -> Jarron Chino" << endl;
-
-    break;
+        cin.clear();
+        cin.ignore( numeric_limits<streamsize>::max(), '\n');
+        cout << "Seleccion invalida. Por favor ingrese un numero de lote valido." << endl;
+        cout << "->";
     }
-
 };
 
-void realizarOferta (Lote& milote, string nombre_p ) 
-{
-    int numeroLote;
-    int montoOferta;
-}
+// void realizarOferta (Lote& milote, string nombre_p ) 
+// {
+//     int numeroLote;
+//     int montoOferta;
+// }
 
 int main () {
  

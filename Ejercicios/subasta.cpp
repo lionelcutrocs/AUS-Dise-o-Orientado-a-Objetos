@@ -158,7 +158,7 @@ void menu_lotes ( Lote& milote, int& resp_lote )
     cin.ignore (numeric_limits<streamsize>::max(), '\n');
 };
 
-void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const string& nombre_p ) 
+void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const string& nombreOferente ) 
 {
     cout << "Ingrese el monto de la oferta para el lote " << resp_lote << ":" << endl;
     cout << "-> ";
@@ -171,7 +171,7 @@ void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const stri
     }
     
     cin.ignore (numeric_limits<streamsize>::max(), '\n');
-    milote.realizarOferta (resp_lote, montoOferta, nombre_p );
+    milote.realizarOferta (resp_lote, montoOferta, nombreOferente );
     cout << "La oferta fue registrada correctamente." << endl;
 }
 
@@ -183,16 +183,16 @@ int main () {
  
  int resp_lote;                                     // variable para almacenar la seleccion del lote
  int montoOferta;                                   // variable para almacenar el monto de la oferta
- string nombre_p;                                   // variable para almacenar el nombre del participante
+ string nombreOferente;                                   // variable para almacenar el nombre del participante
  string nombreL;                                
  char continuar;
 
     // menu principal de la subasta
     do {
 
-     menu_ingreso ( nombre_p );                     // se solicita el nombre del participante
+     menu_ingreso ( nombreOferente );                     // se solicita el nombre del participante
      menu_lotes ( milote, resp_lote );              // muestra la lista de lotes y solicita la seleccion deseada
-     solicitarOferta ( milote, resp_lote, montoOferta, nombre_p );   
+     solicitarOferta ( milote, resp_lote, montoOferta, nombreOferente );   
     
      // se consulta al usuario si desea realizar otra oferta
      cout << "\nDesea realizar otra oferta? (s/n): ";

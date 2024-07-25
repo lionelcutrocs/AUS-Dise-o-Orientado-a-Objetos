@@ -23,7 +23,7 @@ class Lote
  
  string linea;
 
-    Lote () {
+    Lote::Lote() {
         leerLotesDeArchivo ( "lotes.txt" );
     };
 
@@ -33,12 +33,12 @@ class Lote
         if (archivo.is_open()) {
             for (int i = 0; getline(archivo, linea); ++i) {
             if (!linea.empty()) {
-                loteInfo nuevoLote;                                 // se crea un objeto loteInfo
-                lotes[i].nombreL = linea;                           // se asigna el nombre del lote desde la linea que se lee
-                lotes[i].ofertaActual = 0;                          // se accede a ofertaActual y se inicializa correctamente
-                lotes[i].nombreOferente = "";                       // se accede a nombreOferente y se inicializa correctamente
-                lotes.push_back(nuevoLote);                         // se agrega un nuevo lote al vector
-                }                                                   // este metodo logra asignar valores en cada miembro de forma directa
+                loteInfo nuevoLote;                                  // se crea un objeto loteInfo
+                nuevoLote.nombreL = linea;                           // se asigna el nombre del lote desde la linea que se lee
+                nuevoLote.ofertaActual = 0;                          // se accede a ofertaActual y se inicializa correctamente
+                nuevoLote.nombreOferente = "";                       // se accede a nombreOferente y se inicializa correctamente
+                lotes.push_back(nuevoLote);                          // se agrega un nuevo lote al vector
+                }                                                    // este metodo logra asignar valores en cada miembro de forma directa
             }
             archivo.close();
         } else {
@@ -97,27 +97,20 @@ class ManipularArchivos
  public:
  void escribirEnArchivo(const string& nombreArchivo, const string& contenido) {
         // Verificar si el archivo existe
-        if (!filesystem::exists(nombreArchivo)) {
+        if (!archivo.is_open()) {
             // Crear el archivo si no existe
             ofstream archivoNuevo(nombreArchivo);
             if (!archivoNuevo.is_open()) {
                 throw runtime_error("Error al crear el archivo");
             }
-        }
-
-        // Abrir el archivo
-        ofstream archivo(nombreArchivo, ios::app);
-        if (archivo.is_open()) {
-            // Escribir el contenido en el archivo
+        } else {
             archivo << contenido << endl;
             archivo.close();
-        } else {
-            throw runtime_error("Error al abrir el archivo");
-        }   
+        }
     }
 };
 
-// funcione del menu y gestion de ofertas
+// funcion del menu y gestion de ofertas
 void menu_ingreso ( string& nombre_p ) 
 {
     cout << "Bienvenido a la Subasta" << endl;

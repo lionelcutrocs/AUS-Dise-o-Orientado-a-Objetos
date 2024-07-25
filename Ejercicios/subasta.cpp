@@ -61,10 +61,10 @@ class ManipularArchivos
     void Lote::printLotes() const 
     {
         for (const auto& lote : lotes) {
-            cout << "Lote: " << lote.nombreL << endl;
+            cout << "\nLote: " << lote.nombreL << endl;
             cout << "Oferta actual: " << lote.ofertaActual << endl;
             if (!lote.nombreOferente.empty()) {
-                cout << "Oferta actual: " << lote.nombreOferente << endl;
+                cout << "Nombre del Oferente: " << lote.nombreOferente << endl;
             }
             cout << endl;
         }    
@@ -95,7 +95,7 @@ class ManipularArchivos
             archivo << "Lote: " << lote.nombreL << endl;
             archivo << "Oferta ganadora: " << lote.ofertaActual << endl; 
             if (!lote.nombreOferente.empty ()) {
-                archivo << "Oferta ganador: " << lote.nombreOferente << endl;
+                archivo << "Nombre del Oferente: " << lote.nombreOferente << endl;
             }
             archivo << endl;
             
@@ -133,18 +133,21 @@ class ManipularArchivos
 // funcion del menu y gestion de ofertas
 void menu_ingreso ( string& nombre_p ) 
 {
-    cout << "Bienvenido a la Subasta" << endl;
-    cout << "Por favor ingrese su nombre" << endl;
+    cout << "<=============================>" << endl;
+    cout << "\nBienvenido a la Subasta" << endl;
+    cout << "\nPor favor ingrese su nombre" << endl;
     cout << "-> ";
     getline ( cin, nombre_p );
 };
 
 void menu_lotes ( Lote& milote, int& resp_lote )
 {
-    cout << "Esta es la lista de lotes disponibles para ofertar" << endl;
+    cout << "\n**************************************************" << endl;
+    cout << "\nEsta es la lista de lotes disponibles para ofertar" << endl;
     
     milote.printLotes ();
 
+    cout << "**************************************************" << endl;
     cout << "\nSeleccione a continuacion el lote que quiere ofertar" << endl;
     cout << "-> ";
 
@@ -152,15 +155,15 @@ void menu_lotes ( Lote& milote, int& resp_lote )
     {
         cin.clear();
         cin.ignore( numeric_limits<streamsize>::max(), '\n');
-        cout << "Seleccion invalida. Por favor ingrese un numero de lote valido." << endl;
-        cout << "->";
+        cout << "Por favor ingrese un numero de lote valido." << endl;
+        cout << "-> ";
     }
     cin.ignore (numeric_limits<streamsize>::max(), '\n');
 };
 
 void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const string& nombreOferente ) 
 {
-    cout << "Ingrese el monto de la oferta para el lote " << resp_lote << ":" << endl;
+    cout << "\nIngrese el monto de la oferta para el lote " << resp_lote << ":" << endl;
     cout << "-> ";
     while (!(cin >> montoOferta ) || montoOferta <= 0 )
     {
@@ -172,7 +175,7 @@ void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const stri
     
     cin.ignore (numeric_limits<streamsize>::max(), '\n');
     milote.realizarOferta (resp_lote, montoOferta, nombreOferente );
-    cout << "La oferta fue registrada correctamente." << endl;
+    cout << "\n/// La oferta fue registrada correctamente ///" << endl;
 }
 
 int main () {
@@ -199,11 +202,14 @@ int main () {
      cin >> continuar;
      cin.ignore(numeric_limits<streamsize>::max(), '\n');
     
+    system("cls");
+
     } while ( continuar == 's' || continuar == 'S' );
 
  // guardar los resultados al finalizar la subasta
  milote.guardarResultadosEnArchivo( "resultados_subasta.txt" );
  cout << "\nGracias por participar en la subasta!" << endl;
+ cin.get ();
 
 
     return 0;

@@ -197,6 +197,7 @@ int main () {
      // se consulta al usuario si desea realizar otra oferta
      cout << "\nDesea realizar otra oferta? (s/n): ";
      cin >> continuar;
+     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     
     } while ( continuar == 's' || continuar == 'S' );
 

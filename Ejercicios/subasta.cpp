@@ -176,36 +176,22 @@ void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const stri
 
 int main () {
  
- Lote milote;                                   // instancia de la clase Lote para gestionar los lotes
+ Lote milote;                                       // instancia de la clase Lote para gestionar los lotes
 
- milote.leerLotesDeArchivo("lotes.txt");        // leer lotes desde el archivo al iniciar el programa
+//  milote.leerLotesDeArchivo("lotes.txt");        // leer lotes desde el archivo al iniciar el programa
  
- int resp_lote;                                 // variable para almacenar la seleccion del lote
- int montoOferta;                               // variable para almacenar el monto de la oferta
- string nombre_p;                               // variable para almacenar el nombre del participante
+ int resp_lote;                                     // variable para almacenar la seleccion del lote
+ int montoOferta;                                   // variable para almacenar el monto de la oferta
+ string nombre_p;                                   // variable para almacenar el nombre del participante
  string nombreL;                                
  char continuar;
 
     // menu principal de la subasta
     do {
 
-     menu_ingreso ( nombre_p );                 // se solicita el nombre del participante
-     menu_lotes ( milote, resp_lote );          // muestra la lista de lotes y solicita la seleccion deseada
-        
-        // se valida la seleccion del lote y se pide la oferta
-        if ( resp_lote > 0 && resp_lote <= milote.getLotesSize()) {     
-            cout << "Ingrese el monto de su oferta para el lote " << resp_lote << ":" << endl;
-            cout << "-> ";
-            cin >> montoOferta;
-        }
-
-        // se procesa la oferta
-        if ( montoOferta > 0 ) {
-            milote.realizarOferta ( resp_lote, montoOferta, nombre_p );
-            cout << "Oferta registrada correctamente." << endl;
-        } else {
-            cout << "El monto de la oferta debe ser un numero positivo." << endl;
-        }
+     menu_ingreso ( nombre_p );                     // se solicita el nombre del participante
+     menu_lotes ( milote, resp_lote );              // muestra la lista de lotes y solicita la seleccion deseada
+     solicitarOferta ( milote, resp_lote, montoOferta, nombre_p );   
     
      // se consulta al usuario si desea realizar otra oferta
      cout << "\nDesea realizar otra oferta? (s/n): ";

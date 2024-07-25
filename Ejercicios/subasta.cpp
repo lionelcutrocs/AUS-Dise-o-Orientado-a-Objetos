@@ -33,7 +33,7 @@ class Lote
         leerLotesDeArchivo ( "lotes.txt" );
     };
 
-    void leerLotesDeArchivo ( const string& nombreArchivo )
+    void Lote::leerLotesDeArchivo ( const string& nombreArchivo )
     {
         ifstream archivo(nombreArchivo);
         if (archivo.is_open()) {
@@ -52,7 +52,7 @@ class Lote
         }
     }
 
-    void printLotes() const {
+    void Lote::printLotes() const {
         for (const auto& lote : lotes) {
             cout << "Lote: " << lote.nombreL << endl;
             cout << "Oferta actual: " << lote.ofertaActual << endl;
@@ -63,7 +63,7 @@ class Lote
         }    
     }
 
-    void realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferente )
+    void Lote::realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferente )
     {
         if (numeroLote <= 0 || numeroLote > static_cast<int>(lotes.size())) {
             cerr << "Numero de lote invalido." << endl;
@@ -75,7 +75,7 @@ class Lote
     }
 
 
-    void guardarResultadosEnArchivo (const string& nombreArchivo) 
+    void Lote::guardarResultadosEnArchivo (const string& nombreArchivo) const
     {
      ofstream archivo(nombreArchivo);
      if (archivo.is_open()) {
@@ -95,10 +95,10 @@ class Lote
     }     
 }
 
-    int getLotesSize() const {
+    int Lote::getLotesSize() const {
         return static_cast<int>(lotes.size());
     }
-};
+
 
 class ManipularArchivos
 {

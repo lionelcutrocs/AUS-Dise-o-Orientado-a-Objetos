@@ -33,9 +33,11 @@ class Lote
         if (archivo.is_open()) {
             for (int i = 0; getline(archivo, linea); ++i) {
             if (!linea.empty()) {
-                lotes[i].nombreL = linea;                           // se accede a nombreL y se inicializa correctamente
+                loteInfo nuevoLote;                                 // se crea un objeto loteInfo
+                lotes[i].nombreL = linea;                           // se asigna el nombre del lote desde la linea que se lee
                 lotes[i].ofertaActual = 0;                          // se accede a ofertaActual y se inicializa correctamente
                 lotes[i].nombreOferente = "";                       // se accede a nombreOferente y se inicializa correctamente
+                lotes.push_back(nuevoLote);                         // se agrega un nuevo lote al vector
                 }                                                   // este metodo logra asignar valores en cada miembro de forma directa
             }
             archivo.close();
@@ -56,7 +58,7 @@ class Lote
     }
 
     void realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferente ) {
-        if (numeroLote < 1 || numeroLote > lotes.size()) {
+        if (numeroLote <= 0 || numeroLote > static_cast<int>(lotes.size())) {
             cerr << "Numero de lote invalido." << endl;
             return;
         }
@@ -86,7 +88,7 @@ class Lote
 }
 
     int getLotesSize() const {
-        return lotes.size();
+        return static_cast<int>(lotes.size());
     }
 };
 

@@ -1,6 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#include <iostream>                         // biblioteca estandar de I/O 
+#include <vector>                           // biblioteca para el uso de vectores
+#include <string>                           // biblioteca para el uso y manipulacion de strings
 #include <fstream>
 #include <filesystem>
 

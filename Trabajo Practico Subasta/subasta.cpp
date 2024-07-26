@@ -58,7 +58,8 @@ using namespace std;
     {
      ofstream archivo(nombreArchivo);
      if (archivo.is_open()) {
-        for (const auto& lote : lotes ) {
+        for (const auto& lote : lotes ) 
+        {
             archivo << "Lote: " << lote.nombreL << endl;
             archivo << "Oferta ganadora: " << lote.ofertaActual << endl; 
             if (!lote.nombreOferente.empty ()) {
@@ -67,82 +68,63 @@ using namespace std;
             archivo << endl;
             
         }
-        archivo.close();
-        cout << "Resultados guardados en -> " << nombreArchivo << endl;
-    } else {
-        cerr << "Error al guardar el archivo de resultados -> " << nombreArchivo << endl; 
-    }     
-}
+            archivo.close();
+            cout << "Resultados guardados en -> " << nombreArchivo << endl;
+        } else {
+            cerr << "Error al guardar el archivo de resultados -> " << nombreArchivo << endl; 
+        }     
+    }   
 
     int Lote::getLotesSize() const {
         return static_cast<int>(lotes.size());
     }
 
-    // void ManipularArchivos::escribirEnArchivo(const string& nombreArchivo, const string& contenido) 
-    // {
-    //     // Verificar si el archivo existe
-    //     ofstream archivo(nombreArchivo, ios::app);
-    //     if (!archivo.is_open()) {
-    //         // Crear el archivo si no existe
-    //         ofstream archivoNuevo(nombreArchivo);
-    //         if (!archivoNuevo.is_open()) {
-    //             throw runtime_error("Error al crear el archivo");
-    //         } else {
-    //             archivoNuevo << contenido << endl;
-    //             archivoNuevo.close();
-    //         } 
-    //     } else {
-    //         archivo << contenido << endl;
-    //         archivo.close();
-    //     }       
-    // }
-
-// funcion del menu y gestion de ofertas
-void menu_ingreso ( string& nombre_p ) 
-{
-    cout << "<=============================>" << endl;
-    cout << "\nBienvenido a la Subasta" << endl;
-    cout << "\nPor favor ingrese su nombre" << endl;
-    cout << "-> ";
-    getline ( cin, nombre_p );
-};
-
-void menu_lotes ( Lote& milote, int& resp_lote )
-{
-    cout << "\n**************************************************" << endl;
-    cout << "\nEsta es la lista de lotes disponibles para ofertar" << endl;
-    
-    milote.printLotes ();
-
-    cout << "**************************************************" << endl;
-    cout << "\nSeleccione a continuacion el lote que quiere ofertar" << endl;
-    cout << "-> ";
-
-    while (!(cin >> resp_lote ) || resp_lote <= 0 || resp_lote > milote.getLotesSize())
+    // funcion del menu y gestion de ofertas
+    void menu_ingreso ( string& nombre_p ) 
     {
-        cin.clear();
-        cin.ignore( numeric_limits<streamsize>::max(), '\n');
-        cout << "Por favor ingrese un numero de lote valido." << endl;
+        cout << "<=============================>" << endl;
+        cout << "\nBienvenido a la Subasta" << endl;
+        cout << "\nPor favor ingrese su nombre" << endl;
         cout << "-> ";
-    }
-    cin.ignore (numeric_limits<streamsize>::max(), '\n');
-};
+        getline ( cin, nombre_p );
+    };
 
-void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const string& nombreOferente ) 
-{
-    cout << "\nIngrese el monto de la oferta para el lote " << resp_lote << ":" << endl;
-    cout << "-> ";
-    while (!(cin >> montoOferta ) || montoOferta <= 0 )
+    void menu_lotes ( Lote& milote, int& resp_lote )
     {
-        cin.clear();
+        cout << "\n**************************************************" << endl;
+        cout << "\nEsta es la lista de lotes disponibles para ofertar" << endl;
+        
+        milote.printLotes ();
+
+        cout << "**************************************************" << endl;
+        cout << "\nSeleccione a continuacion el lote que quiere ofertar" << endl;
+        cout << "-> ";
+
+        while (!(cin >> resp_lote ) || resp_lote <= 0 || resp_lote > milote.getLotesSize())
+        {
+            cin.clear();
+            cin.ignore( numeric_limits<streamsize>::max(), '\n');
+            cout << "Por favor ingrese un numero de lote valido." << endl;
+            cout << "-> ";
+        }
         cin.ignore (numeric_limits<streamsize>::max(), '\n');
-        cout << "El monto de la oferta debe ser un numero positivo" << endl;
+    };
+
+    void solicitarOferta (Lote& milote, int& resp_lote, int& montoOferta, const string& nombreOferente ) 
+    {
+        cout << "\nIngrese el monto de la oferta para el lote " << resp_lote << ":" << endl;
         cout << "-> ";
+        while (!(cin >> montoOferta ) || montoOferta <= 0 )
+        {
+            cin.clear();
+            cin.ignore (numeric_limits<streamsize>::max(), '\n');
+            cout << "El monto de la oferta debe ser un numero positivo" << endl;
+            cout << "-> ";
+        }
+        
+        cin.ignore (numeric_limits<streamsize>::max(), '\n');
+        milote.realizarOferta (resp_lote, montoOferta, nombreOferente );
+        cout << "\n/// La oferta fue registrada correctamente ///" << endl;
     }
-    
-    cin.ignore (numeric_limits<streamsize>::max(), '\n');
-    milote.realizarOferta (resp_lote, montoOferta, nombreOferente );
-    cout << "\n/// La oferta fue registrada correctamente ///" << endl;
-}
 
 

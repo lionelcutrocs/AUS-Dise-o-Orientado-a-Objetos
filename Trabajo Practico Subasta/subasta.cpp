@@ -78,24 +78,24 @@ using namespace std;
         return static_cast<int>(lotes.size());
     }
 
-    void ManipularArchivos::escribirEnArchivo(const string& nombreArchivo, const string& contenido) 
-    {
-        // Verificar si el archivo existe
-        ofstream archivo(nombreArchivo, ios::app);
-        if (!archivo.is_open()) {
-            // Crear el archivo si no existe
-            ofstream archivoNuevo(nombreArchivo);
-            if (!archivoNuevo.is_open()) {
-                throw runtime_error("Error al crear el archivo");
-            } else {
-                archivoNuevo << contenido << endl;
-                archivoNuevo.close();
-            } 
-        } else {
-            archivo << contenido << endl;
-            archivo.close();
-        }       
-    }
+    // void ManipularArchivos::escribirEnArchivo(const string& nombreArchivo, const string& contenido) 
+    // {
+    //     // Verificar si el archivo existe
+    //     ofstream archivo(nombreArchivo, ios::app);
+    //     if (!archivo.is_open()) {
+    //         // Crear el archivo si no existe
+    //         ofstream archivoNuevo(nombreArchivo);
+    //         if (!archivoNuevo.is_open()) {
+    //             throw runtime_error("Error al crear el archivo");
+    //         } else {
+    //             archivoNuevo << contenido << endl;
+    //             archivoNuevo.close();
+    //         } 
+    //     } else {
+    //         archivo << contenido << endl;
+    //         archivo.close();
+    //     }       
+    // }
 
 // funcion del menu y gestion de ofertas
 void menu_ingreso ( string& nombre_p ) 

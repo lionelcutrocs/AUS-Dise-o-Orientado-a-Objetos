@@ -1,39 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <fstream>
-#include <filesystem>
+#include "subasta.h"
 
 using namespace std;
-
-
-class Lote 
-{
- private:
-    struct loteInfo {
-        string nombreL;
-        string nombreOferente;
-        int ofertaActual = 0;
-    };
-
-    vector <loteInfo> lotes;
-    string linea;
-
- public:
- 
- Lote();
- void leerLotesDeArchivo (const string& nombreArchivo );
- void printLotes () const;
- void realizarOferta ( int numeroLote, int montoOferta, const string& nomreOferente );
- void guardarResultadosEnArchivo ( const string& nombreArchivo ) const;
- int getLotesSize () const;
-};
-
-class ManipularArchivos
-{
- public:
- void escribirEnArchivo (const string& nombreArchivo, const string& contenido);
-};
 
     Lote::Lote() {
         leerLotesDeArchivo ( "lotes.txt" );

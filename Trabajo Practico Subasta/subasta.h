@@ -38,12 +38,6 @@ class Lote
  int getLotesSize () const;
 };
 
-// class ManipularArchivos
-// {
-//  public:
-//  void escribirEnArchivo (const string& nombreArchivo, const string& contenido);
-// };
-
 // funcion para el primer menu de usuario
 void menu_ingreso ( string& nombre_p );
 

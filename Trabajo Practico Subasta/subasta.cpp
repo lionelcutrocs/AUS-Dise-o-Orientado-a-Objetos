@@ -38,46 +38,47 @@ using namespace std;
     }
 
     void Lote::realizarOferta ( int numeroLote, int montoOferta, const string& nombreOferente )
-    {
-        if (numeroLote <= 0 || numeroLote > static_cast<int>(lotes.size())) {
+    {   // se verifica que el numero del lote sea valido
+        if (numeroLote <= 0 || numeroLote > static_cast<int>(lotes.size())) {       
             cerr << "Numero de lote invalido." << endl;
             return;
         }
         
-        loteInfo& lote = lotes[numeroLote - 1];
+        loteInfo& lote = lotes[numeroLote - 1];                 // se obtiene referencia al objeto y 
+        //                                                         se accede al lote seleccionado
         
-        // solo actualiza la oferta si el monto es mayor a 0
-        if ( montoOferta > lote.ofertaActual)
-        {
-            lote.ofertaActual = montoOferta;
-            lote.nombreOferente = nombreOferente;
+        if ( montoOferta > lote.ofertaActual)                   // se comparan los montos de las ofertas
+        {                                                       // si es mayor, se actualiza la informacion
+            lote.ofertaActual = montoOferta;                    // se actualiza la nueva oferta como la actual
+            lote.nombreOferente = nombreOferente;               // se asigna el nombre del nuevo oferente
         }
     }
 
     void Lote::guardarResultadosEnArchivo (const string& nombreArchivo) const
     {
-     ofstream archivo(nombreArchivo);
-     if (archivo.is_open()) {
-        for (const auto& lote : lotes ) 
+     ofstream archivo(nombreArchivo);                           // se crea obj tipo ofstream y se vincula al archivo especificado en "nombreArchivo"
+     if (archivo.is_open()) {                                   // se verifica que la apertura sea correcta para escribirlo
+        for (const auto& lote : lotes )                         // se recorre cada elem del vector
         {
-            archivo << "Lote: " << lote.nombreL << endl;
-            archivo << "Oferta ganadora: " << lote.ofertaActual << endl; 
-            if (!lote.nombreOferente.empty ()) {
-                archivo << "Nombre del Oferente: " << lote.nombreOferente << endl;
+            archivo << "Lote: " << lote.nombreL << endl;                            // escritura
+            archivo << "Oferta ganadora: " << lote.ofertaActual << endl;            // escritura
+            if (!lote.nombreOferente.empty ()) {                                    // se verifica que este vacio la variable
+                archivo << "Nombre del Oferente: " << lote.nombreOferente << endl;  // si no lo esta, se escribe
             }
             archivo << endl;
             
         }
-            archivo.close();
+            archivo.close();                                                        // cierre del archivo
             cout << "Resultados guardados en -> " << nombreArchivo << endl;
         } else {
             cerr << "Error al guardar el archivo de resultados -> " << nombreArchivo << endl; 
         }     
     }   
 
-    int Lote::getLotesSize() const {
-        return static_cast<int>(lotes.size());
-    }
+    int Lote::getLotesSize() const {                    // se obtiene el tamaño del vector para ver los lotes
+        return static_cast<int>(lotes.size());          // se convierte el resultado para asegurar 
+    }                                                   // que sea un entero
+
 
     // funcion del menu y gestion de ofertas
     void menu_ingreso ( string& nombre_p ) 

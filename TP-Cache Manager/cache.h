@@ -22,7 +22,7 @@ private:
 
     bool write_file(const string& key, const T& obj);
     bool read_file(const string& key, T &obj);
-    void update_lru(const string& key);
+    void update_lru(const string &key);
 
 public:
     CacheManager(int cap);
@@ -73,10 +73,10 @@ bool CacheManager<T>::read_file(const string& key, T &obj) {
 }
 
 template <class T>
-void CacheManager<T>::update_lru(const string& key) {
+void CacheManager<T>::update_lru(const string &key) {
     if (cache_data.find(key) != cache_data.end()) {
         lru_list.erase(cache_data[key].second);
-    } else if (lru_list.size() >= capacity) {
+    } else if (lru_list.size() >= static_cast<size_t>(capacity)) {
         string lru_key = lru_list.back();
         lru_list.pop_back();
         cache_data.erase(lru_key);
@@ -85,6 +85,8 @@ void CacheManager<T>::update_lru(const string& key) {
     lru_list.push_front(key);
     cache_data[key].second = lru_list.begin();
 }
+
+
 
 template <class T>
 void CacheManager<T>::insert(const string& key, const T& obj) {

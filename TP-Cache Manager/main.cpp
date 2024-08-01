@@ -121,5 +121,10 @@ int main() {
     cout << "--------------------------------------------------" << endl;
     pause_for_user();
 
+    clear_screen();
+    cout << "Cache Finalizada -> Resultado completo en cache_file.txt" << endl;
+    pause_for_user();
+
+
     return 0;
 }

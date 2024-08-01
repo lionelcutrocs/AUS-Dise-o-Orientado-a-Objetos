@@ -36,7 +36,7 @@ void clear_screen() {
 }
 
 void pause_for_user() {
-    cout << "\nPress Enter to continue...";
+    cout << "->";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
@@ -49,33 +49,27 @@ int main() {
     cout << "--------------------------------------------------" << endl;
     cout << "\nInsertando estudiante 0" << endl;
     my_cache.insert("0", Student(0, 22, "student1"));
-    //clear_screen();
     my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
+    cout << "\n--------------------------------------------------" << endl;
     pause_for_user();
 
-    cout << "--------------------------------------------------" << endl;
     cout << "\nInsertando estudiante 1" << endl;
     my_cache.insert("1", Student(1, 23, "student2"));
-    clear_screen();
-    my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
-    pause_for_user();
 
+    my_cache.show_cache();
+    cout << "\n--------------------------------------------------" << endl;
+    pause_for_user();
 
     cout << "\nInsertando estudiante 2" << endl;
     my_cache.insert("2", Student(2, 25, "student3"));
-    clear_screen();
     my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
+    cout << "\n--------------------------------------------------" << endl;
     pause_for_user();
-
 
     cout << "\nInsertando estudiante 3" << endl;
     my_cache.insert("3", Student(3, 29, "student4"));
-    clear_screen();
     my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
+    cout << "\n--------------------------------------------------" << endl;
     pause_for_user();
 
 

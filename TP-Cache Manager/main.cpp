@@ -77,14 +77,14 @@ int main() {
     cout << "\nActualizando estudiante 2" << endl;
     my_cache.insert("2", Student(22, 222, "EZE"));
     my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
+    cout << "\n--------------------------------------------------" << endl;
     pause_for_user();
 
 
     cout << "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 
     try {
-        cout << "\nRecuperando estudiante 0 (desde el archivo si no está en caché)" << endl;
+        cout << "\nRecuperando estudiante 0 (desde el archivo si no esta en cache)" << endl;
         Student return_obj = my_cache.get("0");
         return_obj.print();
     } catch (const runtime_error& e) {
@@ -94,14 +94,14 @@ int main() {
     pause_for_user();
 
 
-    cout << "Reinsertando estudiante 2" << endl;
+    cout << "\nReinsertando estudiante 2" << endl;
     my_cache.insert("2", Student(2, 25, "EZE"));
     my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
+    cout << "\n--------------------------------------------------" << endl;
     pause_for_user();
 
 
-    cout << "Insertando estudiante 9" << endl;
+    cout << "\nInsertando estudiante 9" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;
@@ -115,7 +115,7 @@ int main() {
     pause_for_user();
 
 
-    cout << "Insertando estudiante 9 una vez más" << endl;
+    cout << "Insertando estudiante 9 una vez mas" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;

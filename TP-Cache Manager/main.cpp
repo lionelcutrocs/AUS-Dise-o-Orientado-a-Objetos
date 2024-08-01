@@ -73,11 +73,11 @@ int main() {
     pause_for_user();
 
 
-    cout << "\n---------------------- UPDATE ----------------------" << endl;
+    cout << "\n-----------UPDATE-------------" << endl;
     cout << "\nActualizando estudiante 2" << endl;
     my_cache.insert("2", Student(22, 222, "EZE"));
     my_cache.show_cache();
-    cout << "\n--------------------------------------------------" << endl;
+    cout << "\n------------------------------" << endl;
     pause_for_user();
 
 
@@ -97,28 +97,28 @@ int main() {
     cout << "\nReinsertando estudiante 2" << endl;
     my_cache.insert("2", Student(2, 25, "EZE"));
     my_cache.show_cache();
-    cout << "\n--------------------------------------------------" << endl;
+    cout << "\n------------------------------" << endl;
     pause_for_user();
 
 
     cout << "\nInsertando estudiante 9" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
     my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
+    cout << "\n------------------------------" << endl;
     // pause_for_user();
 
 
     cout << "Insertando estudiante 9 nuevamente" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
     my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
+    cout << "\n------------------------------" << endl;
     // pause_for_user();
 
 
     cout << "Insertando estudiante 9 una vez mas" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
     my_cache.show_cache();
-    cout << "--------------------------------------------------" << endl;
+    cout << "\n------------------------------" << endl;
     pause_for_user();
 
     clear_screen();

@@ -47,7 +47,7 @@ int main() {
     CacheManager<Student> my_cache(3);
 
     cout << "\n==============================" << endl;
-    cout << "Insertando estudiante 0" << endl;
+    cout << "\nInsertando estudiante 0" << endl;
     my_cache.insert("0", Student(0, 22, "student1"));
     my_cache.show_cache();
     cout << "\n==============================" << endl;
@@ -105,14 +105,14 @@ int main() {
     my_cache.insert("9", Student(1, 5, "Nine"));
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;
-    pause_for_user();
+    // pause_for_user();
 
 
     cout << "Insertando estudiante 9 nuevamente" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;
-    pause_for_user();
+    // pause_for_user();
 
 
     cout << "Insertando estudiante 9 una vez mas" << endl;

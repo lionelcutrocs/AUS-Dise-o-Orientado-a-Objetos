@@ -46,8 +46,8 @@ int main() {
 
     CacheManager<Student> my_cache(3);
 
-    cout << "==============================" << endl;
-    cout << "\nInsertando estudiante 0" << endl;
+    cout << "\n==============================" << endl;
+    cout << "Insertando estudiante 0" << endl;
     my_cache.insert("0", Student(0, 22, "student1"));
     my_cache.show_cache();
     cout << "\n==============================" << endl;
@@ -56,7 +56,6 @@ int main() {
     cout << "==============================" << endl;
     cout << "Insertando estudiante 1" << endl;
     my_cache.insert("1", Student(1, 23, "student2"));
-
     my_cache.show_cache();
     cout << "\n==============================" << endl;
     pause_for_user();
@@ -77,7 +76,6 @@ int main() {
     cout << "\n---------------------- UPDATE ----------------------" << endl;
     cout << "\nActualizando estudiante 2" << endl;
     my_cache.insert("2", Student(22, 222, "EZE"));
-    clear_screen();
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;
     pause_for_user();
@@ -98,7 +96,6 @@ int main() {
 
     cout << "Reinsertando estudiante 2" << endl;
     my_cache.insert("2", Student(2, 25, "EZE"));
-    clear_screen();
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;
     pause_for_user();
@@ -106,7 +103,6 @@ int main() {
 
     cout << "Insertando estudiante 9" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
-    clear_screen();
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;
     pause_for_user();
@@ -114,7 +110,6 @@ int main() {
 
     cout << "Insertando estudiante 9 nuevamente" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
-    clear_screen();
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;
     pause_for_user();
@@ -122,7 +117,6 @@ int main() {
 
     cout << "Insertando estudiante 9 una vez más" << endl;
     my_cache.insert("9", Student(1, 5, "Nine"));
-    clear_screen();
     my_cache.show_cache();
     cout << "--------------------------------------------------" << endl;
     pause_for_user();

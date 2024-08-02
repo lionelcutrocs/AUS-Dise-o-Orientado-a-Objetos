@@ -15,14 +15,16 @@ using namespace std;
 template <class T>
 class CacheManager {
 private:
-    int capacity;
-    map<string, pair<T, typename list<string>::iterator>> cache_data; // <Clave, <Obj, Iterator a LRU>>
-    list<string> lru_list; // Lista para manejar el LRU
-    string filename = "cache_file.txt";
+    int capacidad;                                                      // la capacidad de la cache
 
-    bool write_file(const string& key, const T& obj);
-    bool read_file(const string& key, T &obj);
-    void update_lru(const string &key);
+    // estructura que almacena los datos en la cache, T = obj almacenado y Iterator = iterador a la lista LRU
+    map<string, pair<T, typename list<string>::iterator>> cache_data;
+    list<string> lru_list;                                              // lista para mantener el orden del uso reciente LRU de claves
+    string filename = "cache_file.txt";                                 // destino del resultado de la cache
+
+    bool escribir_arch(const string& key, const T& obj);
+    bool leer_arch(const string& key, T &obj);
+    void actualizar_lru(const string &key);
 
 public:
     CacheManager(int cap);
@@ -34,13 +36,13 @@ public:
 };
 
 template <class T>
-CacheManager<T>::CacheManager(int cap) : capacity(cap) {}
+CacheManager<T>::CacheManager(int cap) : capacidad(cap) {}
 
 template <class T>
 CacheManager<T>::~CacheManager() {}
 
 template <class T>
-bool CacheManager<T>::write_file(const string& key, const T& obj) {
+bool CacheManager<T>::escribir_arch(const string& key, const T& obj) {
     ofstream ofs(filename, ios::app);
     if (!ofs.is_open()) return false;
 
@@ -50,7 +52,7 @@ bool CacheManager<T>::write_file(const string& key, const T& obj) {
 }
 
 template <class T>
-bool CacheManager<T>::read_file(const string& key, T &obj) {
+bool CacheManager<T>::leer_arch(const string& key, T &obj) {
     ifstream ifs(filename);
     if (!ifs.is_open()) return false;
 
@@ -73,10 +75,10 @@ bool CacheManager<T>::read_file(const string& key, T &obj) {
 }
 
 template <class T>
-void CacheManager<T>::update_lru(const string &key) {
+void CacheManager<T>::actualizar_lru(const string &key) {
     if (cache_data.find(key) != cache_data.end()) {
         lru_list.erase(cache_data[key].second);
-    } else if (lru_list.size() >= static_cast<size_t>(capacity)) {
+    } else if (lru_list.size() >= static_cast<size_t>(capacidad)) {
         string lru_key = lru_list.back();
         lru_list.pop_back();
         cache_data.erase(lru_key);
@@ -90,20 +92,20 @@ void CacheManager<T>::update_lru(const string &key) {
 
 template <class T>
 void CacheManager<T>::insert(const string& key, const T& obj) {
-    update_lru(key);
+    actualizar_lru(key);
     cache_data[key] = make_pair(obj, lru_list.begin());
-    write_file(key, obj);
+    escribir_arch(key, obj);
 }
 
 template <class T>
 T CacheManager<T>::get(const string& key) {
     if (cache_data.find(key) != cache_data.end()) {
-        update_lru(key);
+        actualizar_lru(key);
         return cache_data[key].first;
     }
 
     T obj;
-    if (!read_file(key, obj)) {
+    if (!leer_arch(key, obj)) {
         throw runtime_error("Key not found in cache or file.");
     }
 

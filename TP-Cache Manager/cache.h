@@ -60,23 +60,27 @@ template <class T>
 
 bool CacheManager<T>::leer_arch(const string& key, T &obj) 
 {
-    string file_key;
+    // definiciones locales
+    string file_key;                                       // es la clave que se lee del archivo
+    string data;
+    int id, value;
 
     ifstream ifs(nom_archivo);                             // apertura del archivo indicado por nom_archivo
     if (!ifs.is_open()) return false;                      // devuelve un false si no logra abrirse
 
     while (ifs >> file_key) {                              // se lee la primera palabra "clave" y se almacena en file_key
-        if (file_key == key) {
-            int id, value;
-            string data;
-            ifs >> id >> value;
-            getline(ifs, data);                            // lee el resto como datos
+        if (file_key == key) {                             // se compara la clave leida en archivo con la clave que se busca
+ //                                                             si hay coincidencia se leen los datos de esa clave
 
-            obj = T(id, value, data);
+            ifs >> id >> value;
+            getline(ifs, data);                            // lee el resto de la linea y se almacena en data
+
+            obj = T(id, value, data);                      // se crea un nuevo objeto usando los datos leidos y se asignan a "obj"
             ifs.close();
-            return true;
-        }
-        ifs.ignore(numeric_limits<streamsize>::max(), '\n'); // ignora hasta el final de la línea
+            return true;                                   // devuelve true = se encontro y leyo la clave
+        }   
+        // se asegura de ignorar hasta el final sin importar la longitud
+        ifs.ignore(numeric_limits<streamsize>::max(), '\n'); // si file_key no coincide con key -> ignora el resto de linea actual y pasa a la siguiente
     }
     ifs.close();
     return false;

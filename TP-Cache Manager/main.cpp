@@ -6,7 +6,7 @@ using namespace std;
 class Student {
 private:
     int id;
-    int value;
+    int valor;
     string data; // Cambiado a std::string
 
     // Declara a CacheManager como una clase amiga
@@ -16,12 +16,12 @@ private:
 public:
     static const string class_name;
 
-    Student() : id(0), value(0), data("") {}
+    Student() : id(0), valor(0), data("") {}
 
-    Student(int _key, int _value, const string& _data) : id(_key), value(_value), data(_data) {}
+    Student(int _key, int _value, const string& _data) : id(_key), valor(_value), data(_data) {}
 
     void print() const {
-        cout << "Student Object: " << id << "," << value << "," << data << endl;
+        cout << "Student Object: " << id << "," << valor << "," << data << endl;
     }
 
     ~Student() {}

@@ -127,17 +127,21 @@ T CacheManager<T>::get(const string& clave)
         return cache_data[clave].first;                                    
     }
 
+    // si la clave no es encontrada, se intenta leer el obj asociado al archivo
     T obj;
     if (!leer_arch(clave, obj)) {
         throw runtime_error("clave no encontrada en archivo o cache.");
     }
-
+    
+    // si la clave fue encontrada, se inserta el obj en "cache_data"
     insertar(clave, obj);
     return obj;
 }
 
 template <class T>
-void CacheManager<T>::ver_cache() {
+void CacheManager<T>::ver_cache() 
+{
+    // ver la cache e imprimirla
     for (const auto &item : cache_data) {
         cout << item.first << " - " << item.second.first.id << ", " << item.second.first.valor << ", " << item.second.first.data << endl;
     }

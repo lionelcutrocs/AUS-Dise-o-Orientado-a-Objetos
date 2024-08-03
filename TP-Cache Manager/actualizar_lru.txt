@@ -1,0 +1,17 @@
+La función actualizar_lru realiza lo siguiente:
+
+-Verifica si la clave ya está en cache:
+
+Si esta, elimina su iterador asociado de la lista LRU "lru_lista"
+
+-Gestiona el tamaño de la cache:
+
+Si la clave no esta en cache y la cache ha alcanzado su capacidad maxima, elimina la entrada menos reciente (LRU) de cache_data y lru_lista
+
+-Actualiza la lista LRU:
+
+Añade la clave al frente de lru_list para indicar que es la recientemente usada
+
+-Actualiza el iterador en cache_data:
+
+Ajusta el iterador de cache_data para que apunte a la nueva posición en lru_lista

@@ -1,0 +1,14 @@
+-Busca en la caché
+
+Verifica si la clave está presente en cache_data
+Si se encuentra, actualiza la lista LRU y devuelve el objeto asociado
+
+-Lee desde el archivo si no está en la caché
+
+Si la clave no se encuentra en cache_data, intenta leer el objeto desde el archivo
+Si la lectura falla, lanza una excepción indicando que la clave no se encontró ni en el archivo ni en la cache
+
+-Inserta el objeto en la caché y lo devuelve:
+
+Si la clave fue leida correctamente del archivo, inserta el objeto en cache_data
+Devuelve el objeto asociado con la clave

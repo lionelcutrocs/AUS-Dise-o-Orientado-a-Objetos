@@ -48,26 +48,26 @@ int main() {
 
     cout << "\n==============================" << endl;
     cout << "\nInsertando estudiante 0" << endl;
-    my_cache.insert("0", Student(0, 22, "student1"));
+    my_cache.insertar("0", Student(0, 22, "student1"));
     my_cache.ver_cache();
     cout << "\n==============================" << endl;
     pause_for_user();
 
     cout << "==============================" << endl;
     cout << "Insertando estudiante 1" << endl;
-    my_cache.insert("1", Student(1, 23, "student2"));
+    my_cache.insertar("1", Student(1, 23, "student2"));
     my_cache.ver_cache();
     cout << "\n==============================" << endl;
     pause_for_user();
 
     cout << "Insertando estudiante 2" << endl;
-    my_cache.insert("2", Student(2, 25, "student3"));
+    my_cache.insertar("2", Student(2, 25, "student3"));
     my_cache.ver_cache();
     cout << "\n==============================" << endl;
     pause_for_user();
 
     cout << "Insertando estudiante 3" << endl;
-    my_cache.insert("3", Student(3, 29, "student4"));
+    my_cache.insertar("3", Student(3, 29, "student4"));
     my_cache.ver_cache();
     cout << "\n==============================" << endl;
     pause_for_user();
@@ -75,7 +75,7 @@ int main() {
 
     cout << "\n-----------UPDATE-------------" << endl;
     cout << "\nActualizando estudiante 2" << endl;
-    my_cache.insert("2", Student(22, 222, "EZE"));
+    my_cache.insertar("2", Student(22, 222, "EZE"));
     my_cache.ver_cache();
     cout << "\n------------------------------" << endl;
     pause_for_user();
@@ -95,28 +95,28 @@ int main() {
 
 
     cout << "\nReinsertando estudiante 2" << endl;
-    my_cache.insert("2", Student(2, 25, "EZE"));
+    my_cache.insertar("2", Student(2, 25, "EZE"));
     my_cache.ver_cache();
     cout << "\n------------------------------" << endl;
     pause_for_user();
 
 
     cout << "\nInsertando estudiante 9" << endl;
-    my_cache.insert("9", Student(1, 5, "Nine"));
+    my_cache.insertar("9", Student(1, 5, "Nine"));
     my_cache.ver_cache();
     cout << "\n------------------------------" << endl;
     // pause_for_user();
 
 
     cout << "Insertando estudiante 9 nuevamente" << endl;
-    my_cache.insert("9", Student(1, 5, "Nine"));
+    my_cache.insertar("9", Student(1, 5, "Nine"));
     my_cache.ver_cache();
     cout << "\n------------------------------" << endl;
     // pause_for_user();
 
 
     cout << "Insertando estudiante 9 una vez mas" << endl;
-    my_cache.insert("9", Student(1, 5, "Nine"));
+    my_cache.insertar("9", Student(1, 5, "Nine"));
     my_cache.ver_cache();
     cout << "\n------------------------------" << endl;
     pause_for_user();

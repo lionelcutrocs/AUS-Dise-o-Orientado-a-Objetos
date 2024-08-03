@@ -20,7 +20,7 @@ private:
 
     // estructura que almacena los datos en la cache, T = obj almacenado y Iterator = iterador a la lista LRU
     map<string, pair<T, typename list<string>::iterator>> cache_data;
-    list<string> lru_lista;                                                // lista para mantener el orden del uso reciente LRU de claves
+    list<string> lru_lista;                                               // lista para mantener el orden del uso reciente LRU de claves
     string nom_archivo = "cache_file.txt";                                // destino del resultado de la cache
 
     // metodos privados
@@ -33,7 +33,7 @@ public:
     CacheManager(int cap);                                                // constructor
     ~CacheManager();                                                      // destructor
 
-    void insert(const string& clave, const T& obj);                       // incerta un objeto en la cache
+    void insertar(const string& clave, const T& obj);                       // incerta un objeto en la cache
     T get(const string& clave);                                           // obtengo un objeto en la cache
     void ver_cache();                                                     // muestra el contenido de la cache 
 };
@@ -61,67 +61,78 @@ template <class T>
 bool CacheManager<T>::leer_arch(const string& clave, T &obj) 
 {
     // definiciones locales
-    string clave_arch;                                       // es la clave que se lee del archivo
+    string clave_arch;                                          // es la clave que se lee del archivo
     string data;
     int id, valor;
 
-    ifstream ifs(nom_archivo);                             // apertura del archivo indicado por nom_archivo
-    if (!ifs.is_open()) return false;                      // devuelve un false si no logra abrirse
+    ifstream ifs(nom_archivo);                                  // apertura del archivo indicado por nom_archivo
+    if (!ifs.is_open()) return false;                           // devuelve un false si no logra abrirse
 
-    while (ifs >> clave_arch) {                              // se lee la primera palabra "clave" y se almacena en clave_arch
-        if (clave_arch == clave) {                           // se compara la clave leida en archivo con la clave que se busca
- //                                                             si hay coincidencia se leen los datos de esa clave
+    while (ifs >> clave_arch) {                                 // se lee la primera palabra "clave" y se almacena en clave_arch
+        if (clave_arch == clave) {                              // se compara la clave leida en archivo con la clave que se busca
+ //                                                                 si hay coincidencia se leen los datos de esa clave
 
             ifs >> id >> valor;
-            getline(ifs, data);                            // lee el resto de la linea y se almacena en data
+            getline(ifs, data);                                 // lee el resto de la linea y se almacena en data
 
-            obj = T(id, valor, data);                      // se crea un nuevo objeto usando los datos leidos y se asignan a "obj"
+            obj = T(id, valor, data);                           // se crea un nuevo objeto usando los datos leidos y se asignan a "obj"
             ifs.close();
-            return true;                                   // devuelve true = se encontro y leyo la clave
+            return true;                                        // devuelve true = se encontro y leyo la clave
         }   
         // se asegura de ignorar hasta el final sin importar la longitud
-        ifs.ignore(numeric_limits<streamsize>::max(), '\n'); // si clave_arch no coincide con clave -> ignora el resto de linea actual y pasa a la siguiente
+        ifs.ignore(numeric_limits<streamsize>::max(), '\n');    // si clave_arch no coincide con clave -> ignora el resto de linea actual y pasa a la siguiente
     }
     ifs.close();
     return false;
 }
 
 template <class T>
-void CacheManager<T>::actualizar_lru(const string &clave) {
-    if (cache_data.find(clave) != cache_data.end()) {                   // se verifica si existe la clave en "cache_data"
-        lru_lista.erase(cache_data[clave].second);                       // si no, se borra el iterador asociado a "lru_lista"
-    } else if (lru_lista.size() >= static_cast<size_t>(capacidad)) {
-        string lru_key = lru_lista.back();
+void CacheManager<T>::actualizar_lru(const string &clave) 
+{
+    // definicion local
+    string clave_lru;
+
+    if (cache_data.find(clave) != cache_data.end()) {                      // se verifica si existe la clave en "cache_data"
+        lru_lista.erase(cache_data[clave].second);                         // si no, se borra el iterador asociado a "lru_lista"
+                                                                         
+    } else if (lru_lista.size() >= static_cast<size_t>(capacidad)) {       // se chequea que "lru_lista" haya alcanzado su capacidad max, si lo esta se elimina la entrada menos reciente
+        
+        clave_lru = lru_lista.back();                                      //obtengo la clave menos usada recientemente
         lru_lista.pop_back();
-        cache_data.erase(lru_key);
+        cache_data.erase(clave_lru);                                       // se elimina del "cache_data"
     }
 
-    lru_lista.push_front(clave);
-    cache_data[clave].second = lru_lista.begin();
+    lru_lista.push_front(clave);                                           // la clave actual se mueve al frente "la mas usada recientemente"
+    cache_data[clave].second = lru_lista.begin();                          // se actualiza el iterador 
 }
 
 
 
 template <class T>
-void CacheManager<T>::insert(const string& clave, const T& obj) {
-    actualizar_lru(clave);
-    cache_data[clave] = make_pair(obj, lru_lista.begin());
-    escribir_arch(clave, obj);
+void CacheManager<T>::insertar(const string& clave, const T& obj) 
+{
+    actualizar_lru( clave );
+    //                                                                        "cache_data[clave]" asigna al par la clave correspondiente en "cache_data"
+    cache_data[clave] = make_pair( obj, lru_lista.begin ());               // "make_pair" crea un par -> obj es el asociado a la clave
+    //                                                                        "lru_lista" indica la clave mas reciente usada
+    escribir_arch( clave, obj );
 }
 
 template <class T>
-T CacheManager<T>::get(const string& clave) {
-    if (cache_data.find(clave) != cache_data.end()) {
-        actualizar_lru(clave);
-        return cache_data[clave].first;
+T CacheManager<T>::get(const string& clave) 
+{
+    // la condicion busca si la clave existe en "cache_data"
+    if (cache_data.find(clave) != cache_data.end()) {                      // devuelve el iterador si existe "cache_data.find (clave)"           
+        actualizar_lru(clave);                                             // se actualiza la posicion de la clave
+        return cache_data[clave].first;                                    
     }
 
     T obj;
     if (!leer_arch(clave, obj)) {
-        throw runtime_error("clave not found in cache or file.");
+        throw runtime_error("clave no encontrada en archivo o cache.");
     }
 
-    insert(clave, obj);
+    insertar(clave, obj);
     return obj;
 }
 

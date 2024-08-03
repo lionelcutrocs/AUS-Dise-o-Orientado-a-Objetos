@@ -1,14 +1,14 @@
 #ifndef CACHE_H
 #define CACHE_H
 
-#include <iostream>
-#include <fstream>
-#include <map>
-#include <utility>
+#include <iostream>             // libreria estandar para IO
+#include <fstream>              // libreria para manipular archivos
+#include <map>                  // libreria para estructura de datos y realizar pares clave - valor
+#include <utility>              // libreria para crear pares de valores
 #include <string>
-#include <list>
-#include <stdexcept>
-#include <limits>
+#include <list>                 // libreria para crea lista enlazada y gestionar la lista LRU
+#include <stdexcept>            // libreria estandar para obtener excepciones
+#include <limits>               // libreria para trabajar con caracteristicas relacionadas a limites numericos
 
 using namespace std;
 
@@ -33,7 +33,7 @@ public:
     CacheManager(int cap);                                                // constructor
     ~CacheManager();                                                      // destructor
 
-    void insertar(const string& clave, const T& obj);                       // incerta un objeto en la cache
+    void insertar(const string& clave, const T& obj);                     // incerta un objeto en la cache
     T get(const string& clave);                                           // obtengo un objeto en la cache
     void ver_cache();                                                     // muestra el contenido de la cache 
 };

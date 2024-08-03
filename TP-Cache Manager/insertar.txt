@@ -1,0 +1,11 @@
+-Actualiza la lista LRU
+
+Llama a actualizar_lru para gestionar la posicion de la clave en lru_list y, si es necesario, elimina la entrada menos reciente para mantener la capacidad
+
+-Inserta o actualiza el objeto en cache_data
+
+Usa make_pair para crear un par de datos con el objeto y el iterador a lru_list.begin(), y asigna este par a la clave en cache_data
+
+Mantener la información en un archivo
+
+Llama a escribir_arch para guardar la clave y sus datos asociados en un archivo, asegurando la persistencia de los datos.
